@@ -8,20 +8,24 @@
 
   <!--Description-->
   
+  <meta name="description" content="煲汤 | 全栈开发 | 前端 | shuangmuyingzi&#39;s blog | css | javascript | 烹饪">
+  
 
   <!--Author-->
   
-  <meta name="author" content="John Doe">
+  <meta name="author" content="shuangmuyingz">
   
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="websocket"/>
+      <meta property="og:title" content="简单的 Web Socket 客户端"/>
   
   <!--Open Graph Description-->
   
+      <meta property="og:description" content="煲汤 | 全栈开发 | 前端 | shuangmuyingzi&#39;s blog | css | javascript | 烹饪" />
+  
   <!--Open Graph Site Name-->
-  <meta property="og:site_name" content="Hexo"/>
+  <meta property="og:site_name" content="爱煲汤的程序猿"/>
   <!--Type page-->
   
       <meta property="og:type" content="article" />
@@ -33,7 +37,7 @@
 
   <!-- Title -->
   
-  <title>websocket - Hexo</title>
+  <title>简单的 Web Socket 客户端 - 爱煲汤的程序猿</title>
 
 
   <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
@@ -66,7 +70,7 @@
     <div class="logo">
       <a href="/" rel="home">
         
-        <img src="https://hexo.io/logo.svg" alt="Hexo" height="60">
+        <img src="https://hexo.io/logo.svg" alt="爱煲汤的程序猿" height="60">
         
       </a>
     </div>
@@ -113,7 +117,7 @@
         <!-- Title date & tags -->
         <div class="post-header">
           <h1 class="entry-title">
-            websocket
+            简单的 Web Socket 客户端
             
           </h1>
           <p class="posted-on">
@@ -127,8 +131,26 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content">
-          <h1 id="html5-video"><a href="#html5-video" class="headerlink" title="html5 video"></a>html5 video</h1><p><img src="http://htmljs.b0.upaiyun.com/uploads/1397458968317-0.jpg" alt="image"></p>
-<p>布兰登·艾奇（Brendan Eich，1964年～）</p>
+          <p>为了使用Web Socket,需要在Web服务器上运行一个Web Socket服务器。这个程序负责协调各方通信，而且启动后就会不间断的运行下去。本厂后端开发语言为php(毕竟是世界上最好的语言)，有兴趣的可以在github上找相关服务端代码阅读。本文只介绍Web Socket客户端的实现。</p>
+<h2 id="一个聊天室的Web-Socket简单客户端"><a href="#一个聊天室的Web-Socket简单客户端" class="headerlink" title="一个聊天室的Web Socket简单客户端"></a>一个聊天室的Web Socket简单客户端</h2><h3 id="创建Web-Socket对象"><a href="#创建Web-Socket对象" class="headerlink" title="创建Web Socket对象"></a>创建Web Socket对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var ws = new WebSocket(&apos;ws://127.0.0.1:8000&apos;); //填写具体服务端地址</div></pre></td></tr></table></figure>
+<p>ws对象值如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">binaryType:&quot;blob&quot;,</div><div class="line">bufferedAmount:0,</div><div class="line">extensions:&quot;&quot;,</div><div class="line">onclose:null,</div><div class="line">onerror:null,</div><div class="line">onmessage:null,</div><div class="line">onopen:null,</div><div class="line">protocol:&quot;&quot;,</div><div class="line">readyState:1,</div><div class="line">url:&quot;&quot;,</div><div class="line">__proto__:</div></pre></td></tr></table></figure>
+<p>创建WebSocket对象后，页面就会尝试连接服务器。接下来，就是使用WebSocket对象的四个事件一个方法以及一个属性：onOpen、onError、onClose和onMessage还有send以及readyState。利用这些事件、方法、属性就可以实现与服务端的简单通信。</p>
+<h3 id="ws-onopen"><a href="#ws-onopen" class="headerlink" title="ws.onopen"></a>ws.onopen</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">ws.onopen = function () &#123;</div><div class="line">        var bindData = &#123;</div><div class="line">                &quot;type&quot;: &quot;bind&quot;,</div><div class="line">                &quot;from_uid&quot;: &apos;&apos;,</div><div class="line">                &quot;to_uid&quot;: &apos;&apos;,</div><div class="line">                &quot;room_id&quot;:&apos;&apos;,</div><div class="line">                &quot;time&quot;: &apos;&apos;</div><div class="line">        &#125;</div><div class="line">        ws.send( JSON.stringify( bindData ) );</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
+<p>onOpen是在建立连接后触发,代表连接成功。send()方法发送连接的相关信息给服务器端。</p>
+<h3 id="ws-onmessage"><a href="#ws-onmessage" class="headerlink" title="ws.onmessage"></a>ws.onmessage</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ws.onmessage = function (e) &#123;</div><div class="line">        var result = JSON.parse( e.data );</div><div class="line">        switch(result.type)&#123;</div><div class="line">            case &apos;speak&apos;:</div><div class="line">                handleSpeak(result.data);</div><div class="line">                break;</div><div class="line">            case &apos;sendMsg&apos;:</div><div class="line">                break;     </div><div class="line">            default:</div><div class="line">                break;</div><div class="line">        &#125;        </div><div class="line"> &#125;;</div></pre></td></tr></table></figure>
+<p>onmessage是在页面从服务器接收到消息时触发。type区分服务器端返回消息的类型，可跟后端约定好，根据type的不同去执行不同的业务。</p>
+<h3 id="ws-onclose"><a href="#ws-onclose" class="headerlink" title="ws.onclose"></a>ws.onclose</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ws.onclose = function (error) &#123;</div><div class="line">        console.log(&apos;关闭连接&apos;);</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
+<p>onclose是在连接关闭时触发,连接关闭考虑是否需要做相应的提示或者重连。</p>
+<h3 id="ws-onerror"><a href="#ws-onerror" class="headerlink" title="ws.onerror"></a>ws.onerror</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ws.onerror = function (error) &#123;</div><div class="line">        console.log(&apos;连接出错&apos;);</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
+<p>onerror是在连接出现问题时触发，连接出错考虑是否需要做相应的提示或者重连。</p>
+<h3 id="ws-send"><a href="#ws-send" class="headerlink" title="ws.send()"></a>ws.send()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;button&quot; id=&quot;btn&quot; value=&quot;发送&quot; onclick=&quot;sendMsg()&quot; &gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//发送信息到服务端</div><div class="line">    function sendMsg()&#123;</div><div class="line">        var inputText = document.querySelector(&apos;#inputText&apos;);</div><div class="line">        var data = &#123;</div><div class="line">                &quot;type&quot;: &quot;sendMsg&quot;,</div><div class="line">                &quot;from_uid&quot;: &apos;&apos;,</div><div class="line">                &quot;to_uid&quot;: &apos;&apos;,</div><div class="line">                &quot;room_id&quot;:&apos;&apos;,</div><div class="line">                &quot;time&quot;: &apos;&apos;</div><div class="line">                &quot;data&quot;: &#123;</div><div class="line">                    &apos;text&apos;: inputText.value</div><div class="line">                &#125;,</div><div class="line">            &#125;</div><div class="line">        ws.send( JSON.stringify( data ) );</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>send方法用于向服务器发送数据。假设type为’sendMsg’,在onmessage事件里面监听该type对应值的服务端返回，进而做相应的处理。</p>
+<h3 id="ws-readyState"><a href="#ws-readyState" class="headerlink" title="ws.readyState"></a>ws.readyState</h3><p>readyState返回对象的当前状态，一共有四种。可在需要做处理的地方判断状态值进而做相应的提示，一般判断状态值是否为’3’。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">* CONNECTING：值为0，表示正在连接。</div><div class="line">* OPEN：值为1，表示连接成功，可以通信了。</div><div class="line">* CLOSING：值为2，表示连接正在关闭。</div><div class="line">* CLOSED：值为3，表示连接已经关闭，或者打开连接失败。</div></pre></td></tr></table></figure>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>发现一个东西写出来比做出来要难多了，时间仓促，若你遇到类似的需求，看了文章还是有很多疑惑，欢迎加我微信交流,微信号为<code>shuangmuyingzi</code>。如果你觉得本文对你有点帮助的，请给小姐姐一个鼓励。祝大家🎃万圣节快乐！</p>
+<p><img src="/img/webSocket/WechatIMG10.jpeg" alt="money"></p>
 
         </div>
       </article>
@@ -137,7 +159,7 @@
     <div class="container">
       
 <section id="comment">
-  <!-- <h1 class="title">Comments</h1> -->
+  <!-- <h1 class="title">留言</h1> -->
 
   
 </section>
@@ -147,10 +169,6 @@
     <!-- Pre or Next -->
     <div class="nav-links">
       
-      
-        <div class="nav-next">
-          <a href="/2017/10/18/hello-world/" rel="prev">Newer Posts <span class="meta-arraw meta-arraw-right"></span></a>
-        </div>
       
     </div>
 
@@ -167,13 +185,13 @@
         <h1 class="widget-title">关于本站</h1>
         <div class="custom-widget-content">
           
-          <ul><li><a href="https://github.com/GallenHu/hexo-theme-Daily">如何自定义这里的内容(配置教程)?</a></li></ul>
+          煲汤 | 全栈开发 | 前端 | shuangmuyingzi's blog | css | javascript | 烹饪
         </div>
       </aside>
     </div>
     <div class="col-1-3">
       <aside>
-        <h1 class="widget-title">Contact</h1>
+        <h1 class="widget-title">与我联系</h1>
         <div class="widget-text">
           
             
@@ -185,7 +203,7 @@
     </div>
     <div class="col-1-3">
       <aside>
-        <h1 class="widget-title">Search</h1>
+        <h1 class="widget-title">站内搜索</h1>
         <div class="widget-text">
           <form onSubmit="return appDaily.submitSearch('')">
             <p>
@@ -201,7 +219,7 @@
 <!-- Footer -->
 <footer class="site-info">
   <p>
-    <span>Hexo &copy; 2017</span>
+    <span>爱煲汤的程序猿 &copy; 2017</span>
     
       <span class="split">|</span>
       <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
