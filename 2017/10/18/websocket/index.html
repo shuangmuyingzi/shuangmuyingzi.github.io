@@ -131,7 +131,9 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content">
-          <p>为了使用Web Socket,需要在Web服务器上运行一个Web Socket服务器。这个程序负责协调各方通信，而且启动后就会不间断的运行下去。本厂后端开发语言为php(毕竟是世界上最好的语言)，有兴趣的可以在github上找相关服务端代码阅读。本文只介绍Web Socket客户端的实现。</p>
+          <p>HTML5之webSocket的客户端实现，建立webSocket连接、交换信息及最终关闭webSocket连接过程。</p>
+<a id="more"></a>
+<p>为了使用Web Socket,需要在Web服务器上运行一个Web Socket服务器。这个程序负责协调各方通信，而且启动后就会不间断的运行下去。本厂后端开发语言为php(毕竟是世界上最好的语言)，有兴趣的可以在github上找相关服务端代码阅读。本文只介绍Web Socket客户端的实现。</p>
 <h2 id="一个聊天室的Web-Socket简单客户端"><a href="#一个聊天室的Web-Socket简单客户端" class="headerlink" title="一个聊天室的Web Socket简单客户端"></a>一个聊天室的Web Socket简单客户端</h2><h3 id="创建Web-Socket对象"><a href="#创建Web-Socket对象" class="headerlink" title="创建Web Socket对象"></a>创建Web Socket对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var ws = new WebSocket(&apos;ws://127.0.0.1:8000&apos;); //填写具体服务端地址</div></pre></td></tr></table></figure>
 <p>ws对象值如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">binaryType:&quot;blob&quot;,</div><div class="line">bufferedAmount:0,</div><div class="line">extensions:&quot;&quot;,</div><div class="line">onclose:null,</div><div class="line">onerror:null,</div><div class="line">onmessage:null,</div><div class="line">onopen:null,</div><div class="line">protocol:&quot;&quot;,</div><div class="line">readyState:1,</div><div class="line">url:&quot;&quot;,</div><div class="line">__proto__:</div></pre></td></tr></table></figure>
@@ -195,7 +197,11 @@
         <div class="widget-text">
           
             
-              <a href="https://github.com/GallenHu" class="icon icon-github" target="_blank">github</a>
+              <a href="https://github.com/shuangmuyingzi" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="http://weibo.com/shuangmuyingzi" class="icon icon-weibo" target="_blank">weibo</a>
+            
+              <a href="mailto:466570690lzy@gmail.com" class="icon icon-mail" target="_blank">mail</a>
             
           
         </div>
