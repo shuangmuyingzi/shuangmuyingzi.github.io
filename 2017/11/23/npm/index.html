@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <meta name="description" content="全栈开发 | 前端  | css | javascript | 烹饪">
+  
+
+  <!--Author-->
+  
+  <meta name="author" content="shuangmuyingz">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="NPM —  JavaScript 的包管理器"/>
+  
+  <!--Open Graph Description-->
+  
+      <meta property="og:description" content="全栈开发 | 前端  | css | javascript | 烹饪" />
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="爱煲汤的程序猿"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>NPM —  JavaScript 的包管理器 - 爱煲汤的程序猿</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="爱煲汤的程序猿" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            NPM —  JavaScript 的包管理器
+            
+          </h1>
+          <p class="posted-on">
+          2017-11-23
+          </p>
+          <div class="tags-links">
+            
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content">
+          <p>本文主要介绍npm的常用命令，以及如何发布一些常用的js模块化代码到npm上面方便日后的使用，和举例如何把一个vue组件打包发布到npm到最后下载到本地使用的过程。</p>
+<a id="more"></a>
+<p>npm(Node Package Manager)是node的默认模块管理器，一个命令行下的软件，用来安装和管理node模块，同时也可以管理其他开放式的js模块代码。npm有一个好处是除了下载需要的模块外还会帮我们解决依赖关系，同时下载所依赖的模块。</p>
+<h2 id="NPM-——-JavaScript-的包管理器"><a href="#NPM-——-JavaScript-的包管理器" class="headerlink" title="NPM ——  JavaScript 的包管理器"></a>NPM ——  JavaScript 的包管理器</h2><h3 id="npm-help"><a href="#npm-help" class="headerlink" title="npm help"></a>npm help</h3><figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">access, adduser, bin, bugs, c, <span class="keyword">cache</span>, completion, config,</div><div class="line">ddp, dedupe, deprecate, dist-tag, docs, doctor, edit,</div><div class="line">explore, <span class="keyword">get</span>, <span class="keyword">help</span>, <span class="keyword">help</span>-<span class="keyword">search</span>, i, init, <span class="keyword">install</span>,</div><div class="line"><span class="keyword">install</span>-<span class="keyword">test</span>, it, <span class="keyword">link</span>, <span class="keyword">list</span>, <span class="keyword">ln</span>, login, logout, ls,</div><div class="line">outdated, owner, pack, ping, prefix, prune, publish, rb,</div><div class="line"><span class="keyword">rebuild</span>, repo, restart, root, run, run-script, s, se,</div><div class="line"><span class="keyword">search</span>, <span class="keyword">set</span>, shrinkwrap, star, stars, <span class="keyword">start</span>, <span class="keyword">stop</span>, t, team,</div><div class="line"><span class="keyword">test</span>, tst, un, <span class="keyword">uninstall</span>, unpublish, unstar, up, <span class="keyword">update</span>, v,</div><div class="line"><span class="keyword">version</span>, <span class="keyword">view</span>, whoami</div></pre></td></tr></table></figure>
+<p>npm help 可以查看所有可使用的命令。</p>
+<h3 id="npm常用指令"><a href="#npm常用指令" class="headerlink" title="npm常用指令"></a>npm常用指令</h3><figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line">npm install 名字      <span class="comment">//该命令用于安装模块</span></div><div class="line">npm uninstall 名字    <span class="comment">//该命令用于卸载模块</span></div><div class="line">npm <span class="built_in">run</span> 名字          <span class="comment">//该命令用于执行脚本</span></div></pre></td></tr></table></figure>
+<h3 id="如何用npm发布自己的模块"><a href="#如何用npm发布自己的模块" class="headerlink" title="如何用npm发布自己的模块"></a>如何用npm发布自己的模块</h3><p>我们所有下载以及发布的包是存放在这个地址：<a href="https://www.npmjs.com/" target="_blank" rel="external">https://www.npmjs.com/</a><br>我们发布一个东西，得要有自己的标识吧，所以得先注册账号。</p>
+<h4 id="1-注册用户"><a href="#1-注册用户" class="headerlink" title="1.注册用户"></a>1.注册用户</h4><figure class="highlight avrasm"><table><tr><td class="code"><pre><div class="line">npm adduser</div><div class="line">运行该命令后会需要你依次输入</div><div class="line"><span class="symbol">Username:</span></div><div class="line"><span class="symbol">Password:</span></div><div class="line"><span class="symbol">Email:</span></div></pre></td></tr></table></figure>
+<h4 id="2-检查"><a href="#2-检查" class="headerlink" title="2.检查"></a>2.检查</h4><p>接下来是需要检查一下有没有注册成功</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><div class="line"><span class="built_in">npm</span> whoami</div></pre></td></tr></table></figure>
+<h4 id="3-建立package"><a href="#3-建立package" class="headerlink" title="3.建立package"></a>3.建立package</h4><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">npm init</div><div class="line"><span class="comment">//一路回车</span></div><div class="line"><span class="string">name:</span> (dateFormat) datechange</div><div class="line"><span class="string">version:</span> (<span class="number">1.0</span><span class="number">.0</span>) </div><div class="line"><span class="string">description:</span> change date format</div><div class="line">entry <span class="string">point:</span> (index.js) </div><div class="line">test <span class="string">command:</span> </div><div class="line">git <span class="string">repository:</span> <span class="string">https:</span><span class="comment">//github.com/shuangmuyingzi/dateFormat.git</span></div><div class="line"><span class="string">keywords:</span> dateformat date datechange</div><div class="line"><span class="string">author:</span> lingzi</div><div class="line"><span class="string">license:</span> (ISC) </div><div class="line">About to write to <span class="regexp">/Users/</span>linziying<span class="regexp">/Downloads/</span>npm<span class="regexp">/dateFormat/</span><span class="keyword">package</span>.<span class="string">json:</span></div><div class="line"></div><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"datechange"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="string">"description"</span>: <span class="string">"change date format"</span>,</div><div class="line">  <span class="string">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"repository"</span>: &#123;</div><div class="line">    <span class="string">"type"</span>: <span class="string">"git"</span>,</div><div class="line">    <span class="string">"url"</span>: <span class="string">"git+https://github.com/shuangmuyingzi/dateFormat.git"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"keywords"</span>: [</div><div class="line">    <span class="string">"dateformat"</span>,</div><div class="line">    <span class="string">"date"</span>,</div><div class="line">    <span class="string">"datechange"</span></div><div class="line">  ],</div><div class="line">  <span class="string">"author"</span>: <span class="string">"lingzi"</span>,</div><div class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span>,</div><div class="line">  <span class="string">"bugs"</span>: &#123;</div><div class="line">    <span class="string">"url"</span>: <span class="string">"https://github.com/shuangmuyingzi/dateFormat/issues"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"homepage"</span>: <span class="string">"https://github.com/shuangmuyingzi/dateFormat#readme"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">Is <span class="keyword">this</span> ok? (yes)</div></pre></td></tr></table></figure>
+<p>然后会在该目录下多了个package.json文件</p>
+<h4 id="添加简单的日期转换格式插件"><a href="#添加简单的日期转换格式插件" class="headerlink" title="添加简单的日期转换格式插件"></a>添加简单的日期转换格式插件</h4><p>每次后台数据接口返回的基本是时间戳，往往需要转换成常用的日期格式。那我就以一个简单的日期转换格式小插件为例。把下面代码放到package.json文件同级目录里。</p>
+<figure class="highlight qml"><table><tr><td class="code"><pre><div class="line"><span class="built_in">date</span>.js</div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">global</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> datechange = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      </div><div class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">date</span>) </span>&#123;</div><div class="line">  </div><div class="line">        <span class="built_in">date</span> = <span class="built_in">date</span> || <span class="keyword">new</span> <span class="built_in">Date</span>;</div><div class="line">  </div><div class="line">        <span class="keyword">if</span>(!(<span class="built_in">date</span> <span class="keyword">instanceof</span> <span class="built_in">Date</span>)) &#123;</div><div class="line">          <span class="built_in">date</span> = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">date</span>);</div><div class="line">        &#125;</div><div class="line">  </div><div class="line">        <span class="keyword">if</span> (<span class="built_in">isNaN</span>(<span class="built_in">date</span>)) &#123;</div><div class="line">          <span class="keyword">throw</span> <span class="built_in">TypeError</span>(<span class="string">'Invalid date'</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">let</span> re = <span class="built_in">date</span>.getFullYear() + <span class="string">'.'</span> + (<span class="built_in">date</span>.getMonth()+<span class="number">1</span>) + <span class="string">'.'</span> + <span class="built_in">date</span>.getDate();</div><div class="line">        <span class="keyword">return</span> re</div><div class="line">  </div><div class="line">      &#125;</div><div class="line">  &#125;)()</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> define === <span class="string">'function'</span> &amp;&amp; define.amd) &#123;</div><div class="line">    define(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> datechange;</div><div class="line">    &#125;);</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> exports === <span class="string">'object'</span>) &#123;</div><div class="line">    <span class="built_in">module</span>.exports = datechange;</div><div class="line">  &#125; <span class="title">else</span> &#123;</div><div class="line">    global.datechange = datechange;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;)(<span class="keyword">this</span>);</div></pre></td></tr></table></figure>
+<h4 id="4-发布"><a href="#4-发布" class="headerlink" title="4.发布"></a>4.发布</h4><p>npm publish<br>记得在推之前先登录npm要不然会报错。如果是再次推送同一个项目记得修改版本号。 </p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight q"><table><tr><td class="code"><pre><div class="line">npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> datechange</div></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">var datechange</span> = require(<span class="string">'datechange'</span>);</div><div class="line"><span class="attribute">var now</span> = new Date();</div><div class="line"><span class="attribute">var timeStamp</span> = datechange(now);</div></pre></td></tr></table></figure>
+<p>OR</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">'date.js'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div><div class="line">	&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">		<span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">		<span class="keyword">var</span> timeStamp = datechange(<span class="number">1511350834583</span>);</div><div class="line">		alert(timeStamp)</div><div class="line">	&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<p>先安装后使用，包的名称为package.json里的name属性。</p>
+<h3 id="撸一个vue的分页组件小栗子🌰"><a href="#撸一个vue的分页组件小栗子🌰" class="headerlink" title="撸一个vue的分页组件小栗子🌰"></a>撸一个vue的分页组件小栗子🌰</h3><p>未完待续…</p>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>如有错误请多多批评指正，欢迎加我微信交流,微信号为<code>shuangmuyingzi</code>。如果你想催小姐姐写文，请给小姐姐一个鼓励！final,Happy Thanksgiving today and every day!</p>
+<p><img src="https://shuangmuyingzi.github.io/img/wechat.png" alt="money set up-w200"></p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/2017/10/31/websocket/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">关于本站</h1>
+        <div class="custom-widget-content">
+          
+          全栈开发 | 前端  | css | javascript | 烹饪
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">与我联系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/shuangmuyingzi" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="http://weibo.com/shuangmuyingzi" class="icon icon-weibo" target="_blank">weibo</a>
+            
+              <a href="mailto:466570690lzy@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站内搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>爱煲汤的程序猿 &copy; 2017</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>

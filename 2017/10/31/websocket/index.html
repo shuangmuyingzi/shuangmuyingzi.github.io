@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <meta name="description" content="全栈开发 | 前端  | css | javascript | 烹饪">
+  
+
+  <!--Author-->
+  
+  <meta name="author" content="shuangmuyingz">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="简单的 Web Socket 客户端"/>
+  
+  <!--Open Graph Description-->
+  
+      <meta property="og:description" content="全栈开发 | 前端  | css | javascript | 烹饪" />
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="爱煲汤的程序猿"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>简单的 Web Socket 客户端 - 爱煲汤的程序猿</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="爱煲汤的程序猿" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            简单的 Web Socket 客户端
+            
+          </h1>
+          <p class="posted-on">
+          2017-10-31
+          </p>
+          <div class="tags-links">
+            
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content">
+          <p>HTML5之webSocket的客户端实现，建立webSocket连接、交换信息及最终关闭webSocket连接过程。</p>
+<a id="more"></a>
+<p>为了使用Web Socket,需要在Web服务器上运行一个Web Socket服务器。这个程序负责协调各方通信，而且启动后就会不间断的运行下去。本厂后端开发语言为php(毕竟是世界上最好的语言)，有兴趣的可以在github上找相关服务端代码阅读。本文只介绍Web Socket客户端的实现。</p>
+<h2 id="一个聊天室的Web-Socket简单客户端"><a href="#一个聊天室的Web-Socket简单客户端" class="headerlink" title="一个聊天室的Web Socket简单客户端"></a>一个聊天室的Web Socket简单客户端</h2><h3 id="创建Web-Socket对象"><a href="#创建Web-Socket对象" class="headerlink" title="创建Web Socket对象"></a>创建Web Socket对象</h3><figure class="highlight haxe"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> <span class="type">WebSocket</span>(<span class="string">'ws://127.0.0.1:8000'</span>); <span class="comment">//填写具体服务端地址</span></div></pre></td></tr></table></figure>
+<p>ws对象值如下：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="string">binaryType:</span><span class="string">"blob"</span>,</div><div class="line"><span class="string">bufferedAmount:</span><span class="number">0</span>,</div><div class="line"><span class="string">extensions:</span><span class="string">""</span>,</div><div class="line"><span class="string">onclose:</span><span class="literal">null</span>,</div><div class="line"><span class="string">onerror:</span><span class="literal">null</span>,</div><div class="line"><span class="string">onmessage:</span><span class="literal">null</span>,</div><div class="line"><span class="string">onopen:</span><span class="literal">null</span>,</div><div class="line"><span class="string">protocol:</span><span class="string">""</span>,</div><div class="line"><span class="string">readyState:</span><span class="number">1</span>,</div><div class="line"><span class="string">url:</span><span class="string">""</span>,</div><div class="line"><span class="string">__proto__:</span></div></pre></td></tr></table></figure>
+<p>创建WebSocket对象后，页面就会尝试连接服务器。接下来，就是使用WebSocket对象的四个事件一个方法以及一个属性：onOpen、onError、onClose和onMessage还有send以及readyState。利用这些事件、方法、属性就可以实现与服务端的简单通信。</p>
+<h3 id="ws-onopen"><a href="#ws-onopen" class="headerlink" title="ws.onopen"></a>ws.onopen</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">ws.onopen = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> bindData = &#123;</div><div class="line">                <span class="string">"type"</span>: <span class="string">"bind"</span>,</div><div class="line">                <span class="string">"from_uid"</span>: <span class="string">''</span>,</div><div class="line">                <span class="string">"to_uid"</span>: <span class="string">''</span>,</div><div class="line">                <span class="string">"room_id"</span>:<span class="string">''</span>,</div><div class="line">                <span class="string">"time"</span>: <span class="string">''</span></div><div class="line">        &#125;</div><div class="line">        ws.send( <span class="built_in">JSON</span>.stringify( bindData ) );</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
+<p>onOpen是在建立连接后触发,代表连接成功。send()方法发送连接的相关信息给服务器端。</p>
+<h3 id="ws-onmessage"><a href="#ws-onmessage" class="headerlink" title="ws.onmessage"></a>ws.onmessage</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">ws.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> result = <span class="built_in">JSON</span>.parse( e.data );</div><div class="line">        <span class="keyword">switch</span>(result.type)&#123;</div><div class="line">            <span class="keyword">case</span> <span class="string">'speak'</span>:</div><div class="line">                handleSpeak(result.data);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'sendMsg'</span>:</div><div class="line">                <span class="keyword">break</span>;     </div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;        </div><div class="line"> &#125;;</div></pre></td></tr></table></figure>
+<p>onmessage是在页面从服务器接收到消息时触发。type区分服务器端返回消息的类型，可跟后端约定好，根据type的不同去执行不同的业务。</p>
+<h3 id="ws-onclose"><a href="#ws-onclose" class="headerlink" title="ws.onclose"></a>ws.onclose</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">ws.onclose = <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'关闭连接'</span>);</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
+<p>onclose是在连接关闭时触发,连接关闭考虑是否需要做相应的提示或者重连。</p>
+<h3 id="ws-onerror"><a href="#ws-onerror" class="headerlink" title="ws.onerror"></a>ws.onerror</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">ws.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'连接出错'</span>);</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
+<p>onerror是在连接出现问题时触发，连接出错考虑是否需要做相应的提示或者重连。</p>
+<h3 id="ws-send"><a href="#ws-send" class="headerlink" title="ws.send()"></a>ws.send()</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">&lt;input <span class="attribute">type</span>=<span class="string">"button"</span> <span class="attribute">id</span>=<span class="string">"btn"</span> <span class="attribute">value</span>=<span class="string">"发送"</span> <span class="attribute">onclick</span>=<span class="string">"sendMsg()"</span> &gt;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">//发送信息到服务端</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sendMsg</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> inputText = <span class="built_in">document</span>.querySelector(<span class="string">'#inputText'</span>);</div><div class="line">        <span class="keyword">var</span> data = &#123;</div><div class="line">                <span class="string">"type"</span>: <span class="string">"sendMsg"</span>,</div><div class="line">                <span class="string">"from_uid"</span>: <span class="string">''</span>,</div><div class="line">                <span class="string">"to_uid"</span>: <span class="string">''</span>,</div><div class="line">                <span class="string">"room_id"</span>:<span class="string">''</span>,</div><div class="line">                <span class="string">"time"</span>: <span class="string">''</span></div><div class="line">                <span class="string">"data"</span>: &#123;</div><div class="line">                    <span class="string">'text'</span>: inputText.value</div><div class="line">                &#125;,</div><div class="line">            &#125;</div><div class="line">        ws.send( <span class="built_in">JSON</span>.stringify( data ) );</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>send方法用于向服务器发送数据。假设type为’sendMsg’,在onmessage事件里面监听该type对应值的服务端返回，进而做相应的处理。</p>
+<h3 id="ws-readyState"><a href="#ws-readyState" class="headerlink" title="ws.readyState"></a>ws.readyState</h3><p>readyState返回对象的当前状态，一共有四种。可在需要做处理的地方判断状态值进而做相应的提示，一般判断状态值是否为’3’。</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><div class="line"><span class="bullet">* </span>CONNECTING：值为0，表示正在连接。</div><div class="line"><span class="bullet">* </span>OPEN：值为1，表示连接成功，可以通信了。</div><div class="line"><span class="bullet">* </span>CLOSING：值为2，表示连接正在关闭。</div><div class="line"><span class="bullet">* </span>CLOSED：值为3，表示连接已经关闭，或者打开连接失败。</div></pre></td></tr></table></figure>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>发现一个东西写出来比做出来要难多了，时间仓促，若你遇到类似的需求，看了文章还是有很多疑惑，欢迎加我微信交流,微信号为<code>shuangmuyingzi</code>。如果你觉得本文对你有点帮助的，请给小姐姐一个鼓励。祝大家🎃万圣节快乐！</p>
+<p><img src="https://shuangmuyingzi.github.io/img/money.jpeg" alt="money set up-w200"></p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2017/11/23/npm/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一页</a>
+        </div>
+      
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">关于本站</h1>
+        <div class="custom-widget-content">
+          
+          全栈开发 | 前端  | css | javascript | 烹饪
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">与我联系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/shuangmuyingzi" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="http://weibo.com/shuangmuyingzi" class="icon icon-weibo" target="_blank">weibo</a>
+            
+              <a href="mailto:466570690lzy@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站内搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>爱煲汤的程序猿 &copy; 2017</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
