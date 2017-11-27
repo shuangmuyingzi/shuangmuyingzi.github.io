@@ -150,10 +150,52 @@
 <figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">var datechange</span> = require(<span class="string">'datechange'</span>);</div><div class="line"><span class="attribute">var now</span> = new Date();</div><div class="line"><span class="attribute">var timeStamp</span> = datechange(now);</div></pre></td></tr></table></figure>
 <p>OR</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">'date.js'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div><div class="line">	&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">		<span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">		<span class="keyword">var</span> timeStamp = datechange(<span class="number">1511350834583</span>);</div><div class="line">		alert(timeStamp)</div><div class="line">	&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<p>先安装后使用，包的名称为package.json里的name属性。</p>
-<h3 id="撸一个vue的分页组件小栗子🌰"><a href="#撸一个vue的分页组件小栗子🌰" class="headerlink" title="撸一个vue的分页组件小栗子🌰"></a>撸一个vue的分页组件小栗子🌰</h3><p>未完待续…</p>
-<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>如有错误请多多批评指正，欢迎加我微信交流,微信号为<code>shuangmuyingzi</code>。如果你想催小姐姐写文，请给小姐姐一个鼓励！final,Happy Thanksgiving today and every day!</p>
-<p><img src="https://shuangmuyingzi.github.io/img/wechat.png" alt="money set up-w200"></p>
+<p>先安装后使用，包的名称为package.json里的name属性。<br>具体代码看github:<br><a href="https://github.com/shuangmuyingzi/dateFormat" target="_blank" rel="external">https://github.com/shuangmuyingzi/dateFormat</a></p>
+<h3 id="Vue组件如何上传到NPM"><a href="#Vue组件如何上传到NPM" class="headerlink" title="Vue组件如何上传到NPM"></a>Vue组件如何上传到NPM</h3><h4 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h4><p>用webpack把项目打包成JS文件，然后在package.json的 main导出该JS文件。</p>
+<h5 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h5><ul>
+<li><p>vue-cli创建vue简单项目 </p>
+<p>  <code>vue init webpack-simple load-ling-zi</code></p>
+</li>
+<li><p>修改package.json</p>
+<ol>
+<li><p>修改<code>&quot;private&quot;: false</code></p>
+<p> npm默认创建的项目是私有的，如果要发布至npm必须将其公开</p>
+</li>
+<li><p>添加<code>&quot;main&quot;: &quot;dist/build.js&quot;</code></p>
+<p> 通过<code>import loading from &#39;load-ling-zi&#39;</code>引用该组件时，项目会自动找到<code>node_modules/load-ling-zi/dist/build.js</code></p>
+</li>
+</ol>
+</li>
+<li><p>在src加入组件代码App.vue， 并创建我们的导出文件index.js。<br>在index.js中添加：</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> load <span class="keyword">from</span> <span class="string">'./App.vue'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> load</div><div class="line"><span class="comment">//global 情况下 自动安装</span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span> &amp;&amp; <span class="built_in">window</span>.Vue) &#123;</div><div class="line">  <span class="built_in">window</span>.Vue.component(<span class="string">'load'</span>, load);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>因为最后我们是打包成一个js文件，所以需要修改一下配置文件<code>webpack.config.js</code></p>
+<p> 因为不是所有使用你组件的人都是通过npm按住和impor的很多人是通过<code>&lt;script&gt;</code>直接引入的,我们要将libraryTarget改为umd,以及修改入口文件与设置导出文件目录以及名称。   </p>
+<pre><code><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="string">entry:</span> <span class="string">'./src/index.js'</span>,</div><div class="line"><span class="string">output:</span> &#123;</div><div class="line"><span class="string">path:</span> path.resolve(__dirname, <span class="string">'./dist'</span>),</div><div class="line"><span class="string">publicPath:</span> <span class="string">'/dist/'</span>,</div><div class="line"><span class="string">filename:</span> <span class="string">'build.js'</span>,</div><div class="line"><span class="string">library:</span> <span class="string">'load'</span>,</div><div class="line"><span class="string">libraryTarget:</span> <span class="string">'umd'</span>,</div><div class="line"><span class="string">umdNamedDefine:</span> <span class="literal">true</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+<ul>
+<li><p>最后需要把<code>.gitignore</code>文件里面的<code>/dist</code>删除掉要不然上传时会忽略掉dist打包的文件。</p>
+<p> 具体代码已放到github：<br> <a href="https://github.com/shuangmuyingzi/loadingModule/tree/master/load/load-ling-zi" target="_blank" rel="external">https://github.com/shuangmuyingzi/loadingModule/tree/master/load/load-ling-zi</a></p>
+</li>
+</ul>
+<h5 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h5><p><code>npm publish</code>，具体参考上面步骤。</p>
+<h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><ol>
+<li>Installation</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># install dependencies</span></div><div class="line">npm install load-ling-zi -D</div></pre></td></tr></table></figure>
+<ol>
+<li>Usage</li>
+</ol>
+<figure class="highlight django"><table><tr><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">loading</span> <span class="attr">v-if</span>=<span class="string">"loading.isShow"</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><span class="template-variable">&#123;&#123; loading.text &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">loading</span>&gt;</span></span></div><div class="line"><span class="xml"></span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></div><div class="line"><span class="xml">    import loading from 'load-ling-zi'</span></div><div class="line"><span class="xml">    export default &#123;</span></div><div class="line"><span class="xml">        components: &#123;</span></div><div class="line"><span class="xml">            loading:loading</span></div><div class="line"><span class="xml">        &#125;,</span></div><div class="line"><span class="xml">        data () &#123;</span></div><div class="line"><span class="xml">            return &#123;</span></div><div class="line"><span class="xml">                loading:&#123;</span></div><div class="line"><span class="xml">                    isShow:true,</span></div><div class="line"><span class="xml">                    text:"加载中"</span></div><div class="line"><span class="xml">                &#125;,   </span></div><div class="line"><span class="xml">            &#125;</span></div><div class="line"><span class="xml">        &#125;</span></div><div class="line"><span class="xml">    &#125;</span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<h4 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h4><p>在main里直接导出Vue组件（.vue文件）<br>具体代码看这里：<br><a href="https://github.com/shuangmuyingzi/loadingModule/tree/master/loading" target="_blank" rel="external">https://github.com/shuangmuyingzi/loadingModule/tree/master/loading</a></p>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>关于vue组件、插件的实现方式估计还有很多的办法,本文权当抛砖引玉，水平有限，举的例子也是比较简单，一个好的组件也要考虑更多的可配置性以及通用性，数据的可配置，结构的可配置，样式的可配置等等，es里面模块化的写法也是很多，还有一些直接在<code>&lt;script&gt;</code>引入，所以要考虑如何导出代码能够满足更多场景的使用。欢迎加我微信一起交流探索,微信号为<code>shuangmuyingzi</code>。<br>另外，如果觉得本文对您还是有所帮助，请给小姐姐一点鼓励。</p>
+<div class="half" style="overflow:hidden"><br>    <img width="200" style="float:left" src="https://shuangmuyingzi.github.io/img/wechat.png"><img width="200" style="float:right" src="https://shuangmuyingzi.github.io/img/alipay.jpg"><br></div>
+
+
+
 
         </div>
       </article>
