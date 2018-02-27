@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <meta name="description" content="全栈开发 | 前端  | css | javascript | 烹饪">
+  
+
+  <!--Author-->
+  
+  <meta name="author" content="shuangmuyingz">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="js递归"/>
+  
+  <!--Open Graph Description-->
+  
+      <meta property="og:description" content="全栈开发 | 前端  | css | javascript | 烹饪" />
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="爱煲汤的程序猿"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>js递归 - 爱煲汤的程序猿</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="爱煲汤的程序猿" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            js递归
+            
+          </h1>
+          <p class="posted-on">
+          2018-02-27
+          </p>
+          <div class="tags-links">
+            
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content">
+          <p>程序调用自身的编程技巧称为递归。递归思想也是软件开发中非常重要的基本思想之一。当然这种思想是要有，但是确实递归会影响效率。</p>
+<a id="more"></a>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>我们称自己调用自己就叫做递归。</p>
+<h3 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h3><p>从小学就接触的阶乘就可以用递归实现。<br>示例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> n;</div><div class="line">    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(factorial(<span class="number">4</span>)) <span class="comment">// 4 * 3 * 2 * 1 = 24</span></div></pre></td></tr></table></figure>
+<h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><p>曾经去面试时，就有这样一道题目，说是写出一个函数实现如下数列：1, 1, 2, 3, 5, 8, 13, 21, 34 … 。当时自以为很机智地一直在找规律，回来后跟别人说起，结果被深深的鄙视.</p>
+<p>递归实现斐波那契数列：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> n &lt; <span class="number">2</span> ? n : fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fibonacci(<span class="number">8</span>)) <span class="comment">// 1 1 2 3 5 8 13 21</span></div></pre></td></tr></table></figure>
+<h3 id="递归条件"><a href="#递归条件" class="headerlink" title="递归条件"></a>递归条件</h3><p>从这两个例子中，我们可以看出：</p>
+<p>构成递归需具备边界条件、递归前进段和递归返回段，当边界条件不满足时，递归前进，当边界条件满足时，递归返回。阶乘中的 n == 1 和 斐波那契数列中的 n &lt; 2 都是边界条件。递归不能无限制地调用本身，边界条件就是递归的出口。</p>
+<h3 id="递归优化"><a href="#递归优化" class="headerlink" title="递归优化"></a>递归优化</h3><p>我们知道当执行一个函数的时候，就会创建一个执行上下文，并且压入执行上下文栈，当函数执行完毕的时候，就会将函数的执行上下文从栈中弹出。我们看上面阶乘的列子会发现JavaScript会不停的创建执行上下文压入执行上下文栈，对于内存而言，维护这么多的执行上下文是一笔不小的开销。</p>
+<p>接下来我们试试用尾调用来优化它。</p>
+<h4 id="尾调用"><a href="#尾调用" class="headerlink" title="尾调用"></a>尾调用</h4><p>尾调用，是指函数内部的最后一个动作是函数调用。该调用的返回值，直接返回给函数。<br>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 尾调用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> b(x);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然而</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 非尾调用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> b(x) + <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为 b(x) 的返回值还需要跟 1 进行计算后，a(x)才会返回值。</p>
+<p>也就说尾调用函数执行时，虽然也调用了一个函数，但是因为原来的函数执行完毕，执行上下文会被弹出，执行上下文栈中相当于只多压入了一个执行上下文。然而非尾调用函数，就会创建多个执行上下文压入执行上下文栈。</p>
+<p>接下来我们用尾调用来优化递归：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n, res</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> res;</div><div class="line">    <span class="keyword">return</span> factorial(n - <span class="number">1</span>, n * res)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(factorial(<span class="number">4</span>, <span class="number">1</span>)) <span class="comment">// 24</span></div></pre></td></tr></table></figure>
+<p>参考链接：<a href="https://segmentfault.com/a/1190000011142875" target="_blank" rel="external">https://segmentfault.com/a/1190000011142875</a></p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/2018/01/26/debounce_throttle/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">关于本站</h1>
+        <div class="custom-widget-content">
+          
+          全栈开发 | 前端  | css | javascript | 烹饪
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">与我联系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/shuangmuyingzi" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="http://weibo.com/shuangmuyingzi" class="icon icon-weibo" target="_blank">weibo</a>
+            
+              <a href="mailto:466570690lzy@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站内搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>爱煲汤的程序猿 &copy; 2018</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
