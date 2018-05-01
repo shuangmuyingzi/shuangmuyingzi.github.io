@@ -18,7 +18,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="NPM —  JavaScript 的包管理器"/>
+      <meta property="og:title" content="NPM — JavaScript 的包管理器"/>
   
   <!--Open Graph Description-->
   
@@ -37,7 +37,7 @@
 
   <!-- Title -->
   
-  <title>NPM —  JavaScript 的包管理器 - 爱煲汤的程序猿</title>
+  <title>NPM — JavaScript 的包管理器 - 爱煲汤的程序猿</title>
 
 
   <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
@@ -117,7 +117,7 @@
         <!-- Title date & tags -->
         <div class="post-header">
           <h1 class="entry-title">
-            NPM —  JavaScript 的包管理器
+            NPM — JavaScript 的包管理器
             
           </h1>
           <p class="posted-on">
@@ -173,10 +173,16 @@
 <ul>
 <li><p>因为最后我们是打包成一个js文件，所以需要修改一下配置文件<code>webpack.config.js</code></p>
 <p> 因为不是所有使用你组件的人都是通过npm按住和impor的很多人是通过<code>&lt;script&gt;</code>直接引入的,我们要将libraryTarget改为umd,以及修改入口文件与设置导出文件目录以及名称。   </p>
-<pre><code><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line"><span class="string">entry:</span> <span class="string">'./src/index.js'</span>,</div><div class="line"><span class="string">output:</span> &#123;</div><div class="line"><span class="string">path:</span> path.resolve(__dirname, <span class="string">'./dist'</span>),</div><div class="line"><span class="string">publicPath:</span> <span class="string">'/dist/'</span>,</div><div class="line"><span class="string">filename:</span> <span class="string">'build.js'</span>,</div><div class="line"><span class="string">library:</span> <span class="string">'load'</span>,</div><div class="line"><span class="string">libraryTarget:</span> <span class="string">'umd'</span>,</div><div class="line"><span class="string">umdNamedDefine:</span> <span class="literal">true</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<pre><code>entry: &apos;./src/index.js&apos;,
+output: {
+path: path.resolve(__dirname, &apos;./dist&apos;),
+publicPath: &apos;/dist/&apos;,
+filename: &apos;build.js&apos;,
+library: &apos;load&apos;,
+libraryTarget: &apos;umd&apos;,
+umdNamedDefine: true
+},
 </code></pre></li>
-</ul>
-<ul>
 <li><p>最后需要把<code>.gitignore</code>文件里面的<code>/dist</code>删除掉要不然上传时会忽略掉dist打包的文件。</p>
 <p> 具体代码已放到github：<br> <a href="https://github.com/shuangmuyingzi/loadingModule/tree/master/load/load-ling-zi" target="_blank" rel="external">https://github.com/shuangmuyingzi/loadingModule/tree/master/load/load-ling-zi</a></p>
 </li>
@@ -191,11 +197,7 @@
 </ol>
 <figure class="highlight django"><table><tr><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">loading</span> <span class="attr">v-if</span>=<span class="string">"loading.isShow"</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><span class="template-variable">&#123;&#123; loading.text &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">loading</span>&gt;</span></span></div><div class="line"><span class="xml"></span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span></div><div class="line"><span class="xml">    import loading from 'load-ling-zi'</span></div><div class="line"><span class="xml">    export default &#123;</span></div><div class="line"><span class="xml">        components: &#123;</span></div><div class="line"><span class="xml">            loading:loading</span></div><div class="line"><span class="xml">        &#125;,</span></div><div class="line"><span class="xml">        data () &#123;</span></div><div class="line"><span class="xml">            return &#123;</span></div><div class="line"><span class="xml">                loading:&#123;</span></div><div class="line"><span class="xml">                    isShow:true,</span></div><div class="line"><span class="xml">                    text:"加载中"</span></div><div class="line"><span class="xml">                &#125;,   </span></div><div class="line"><span class="xml">            &#125;</span></div><div class="line"><span class="xml">        &#125;</span></div><div class="line"><span class="xml">    &#125;</span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
 <h4 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h4><p>在main里直接导出Vue组件（.vue文件）<br>具体代码看这里：<br><a href="https://github.com/shuangmuyingzi/loadingModule/tree/master/loading" target="_blank" rel="external">https://github.com/shuangmuyingzi/loadingModule/tree/master/loading</a></p>
-<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>关于vue组件、插件的实现方式估计还有很多的办法,本文权当抛砖引玉，水平有限，举的例子也是比较简单，一个好的组件也要考虑更多的可配置性以及通用性，数据的可配置，结构的可配置，样式的可配置等等，es里面模块化的写法也是很多，还有一些直接在<code>&lt;script&gt;</code>引入，所以要考虑如何导出代码能够满足更多场景的使用。欢迎加我微信一起交流探索,微信号为<code>shuangmuyingzi</code>。<br>另外，如果觉得本文对您还是有所帮助，请给小姐姐一点鼓励。</p>
-<div class="half" style="overflow:hidden"><br>    <img width="200" style="float:left" src="https://shuangmuyingzi.github.io/img/wechat.png"><img width="200" style="float:right" src="https://shuangmuyingzi.github.io/img/alipay.jpg"><br></div>
-
-
-
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>关于vue组件、插件的实现方式估计还有很多的办法,本文权当抛砖引玉，水平有限，举的例子也是比较简单，一个好的组件也要考虑更多的可配置性以及通用性，数据的可配置，结构的可配置，样式的可配置等等，es里面模块化的写法也是很多，还有一些直接在<code>&lt;script&gt;</code>引入，所以要考虑如何导出代码能够满足更多场景的使用。</p>
 
         </div>
       </article>

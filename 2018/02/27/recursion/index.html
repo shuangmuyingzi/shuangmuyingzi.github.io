@@ -133,24 +133,24 @@
         <div class="entry-content">
           <p>程序调用自身的编程技巧称为递归。递归思想也是软件开发中非常重要的基本思想之一。当然这种思想是要有，但是确实递归会影响效率。</p>
 <a id="more"></a>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>我们称自己调用自己就叫做递归。</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>我们称自己调用自己就叫做递归。</p>
 <h3 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h3><p>从小学就接触的阶乘就可以用递归实现。<br>示例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> n;</div><div class="line">    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(factorial(<span class="number">4</span>)) <span class="comment">// 4 * 3 * 2 * 1 = 24</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> n;</div><div class="line">    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>)</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(factorial(<span class="number">4</span>)) <span class="comment">// 4 * 3 * 2 * 1 = 24</span></div></pre></td></tr></table></figure>
 <h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><p>曾经去面试时，就有这样一道题目，说是写出一个函数实现如下数列：1, 1, 2, 3, 5, 8, 13, 21, 34 … 。当时自以为很机智地一直在找规律，回来后跟别人说起，结果被深深的鄙视.</p>
 <p>递归实现斐波那契数列：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> n &lt; <span class="number">2</span> ? n : fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fibonacci(<span class="number">8</span>)) <span class="comment">// 1 1 2 3 5 8 13 21</span></div></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="title">fibonacci</span>(n)&#123;</div><div class="line">    <span class="keyword">return</span> <span class="type">n</span> &lt; <span class="number">2</span> ? n : <span class="type">fibonacci</span>(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);</div><div class="line">&#125;</div><div class="line">console.log(fibonacci(<span class="number">8</span>)) // <span class="number">1</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">5</span> <span class="number">8</span> <span class="number">13</span> <span class="number">21</span></div></pre></td></tr></table></figure>
 <h3 id="递归条件"><a href="#递归条件" class="headerlink" title="递归条件"></a>递归条件</h3><p>从这两个例子中，我们可以看出：</p>
 <p>构成递归需具备边界条件、递归前进段和递归返回段，当边界条件不满足时，递归前进，当边界条件满足时，递归返回。阶乘中的 n == 1 和 斐波那契数列中的 n &lt; 2 都是边界条件。递归不能无限制地调用本身，边界条件就是递归的出口。</p>
 <h3 id="递归优化"><a href="#递归优化" class="headerlink" title="递归优化"></a>递归优化</h3><p>我们知道当执行一个函数的时候，就会创建一个执行上下文，并且压入执行上下文栈，当函数执行完毕的时候，就会将函数的执行上下文从栈中弹出。我们看上面阶乘的列子会发现JavaScript会不停的创建执行上下文压入执行上下文栈，对于内存而言，维护这么多的执行上下文是一笔不小的开销。</p>
 <p>接下来我们试试用尾调用来优化它。</p>
-<h4 id="尾调用"><a href="#尾调用" class="headerlink" title="尾调用"></a>尾调用</h4><p>尾调用，是指函数内部的最后一个动作是函数调用。该调用的返回值，直接返回给函数。<br>举个例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 尾调用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> b(x);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="尾调用"><a href="#尾调用" class="headerlink" title="尾调用"></a>尾调用</h3><p>尾调用，是指函数内部的最后一个动作是函数调用。该调用的返回值，直接返回给函数。<br>举个例子：</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 尾调用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span><span class="params">(x)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> b(x);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>然而</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 非尾调用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> b(x) + <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 非尾调用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span><span class="params">(x)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> b(x) + <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>因为 b(x) 的返回值还需要跟 1 进行计算后，a(x)才会返回值。</p>
 <p>也就说尾调用函数执行时，虽然也调用了一个函数，但是因为原来的函数执行完毕，执行上下文会被弹出，执行上下文栈中相当于只多压入了一个执行上下文。然而非尾调用函数，就会创建多个执行上下文压入执行上下文栈。</p>
 <p>接下来我们用尾调用来优化递归：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n, res</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> res;</div><div class="line">    <span class="keyword">return</span> factorial(n - <span class="number">1</span>, n * res)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(factorial(<span class="number">4</span>, <span class="number">1</span>)) <span class="comment">// 24</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n, res</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> res;</div><div class="line">    <span class="keyword">return</span> factorial(n - <span class="number">1</span>, n * res)</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(factorial(<span class="number">4</span>, <span class="number">1</span>)) <span class="comment">// 24</span></div></pre></td></tr></table></figure>
 <p>参考链接：<a href="https://segmentfault.com/a/1190000011142875" target="_blank" rel="external">https://segmentfault.com/a/1190000011142875</a></p>
 
         </div>
@@ -176,7 +176,7 @@
       
       
         <div class="nav-next">
-          <a href="/2018/01/26/debounce_throttle/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
+          <a href="/2018/01/26/debounce-throttle/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
         </div>
       
     </div>
