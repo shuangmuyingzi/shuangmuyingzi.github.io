@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <meta name="description" content="全栈开发 | 前端  | css | javascript | 烹饪">
+  
+
+  <!--Author-->
+  
+  <meta name="author" content="shuangmuyingz">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="js基础"/>
+  
+  <!--Open Graph Description-->
+  
+      <meta property="og:description" content="全栈开发 | 前端  | css | javascript | 烹饪" />
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="爱煲汤的程序猿"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>js基础 - 爱煲汤的程序猿</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="爱煲汤的程序猿" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            js基础
+            
+          </h1>
+          <p class="posted-on">
+          2018-06-28
+          </p>
+          <div class="tags-links">
+            
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content">
+          <p>js基础备忘</p>
+<a id="more"></a>
+<h3 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h3><p>valueOf方法是一个所有对象都拥有的方法，表示对该对象求值。不同对象的valueOf方法不尽一致，数组的valueOf方法返回数组本身。</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">var arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.valueOf() <span class="comment">// [1, 2, 3]</span></div></pre></td></tr></table></figure>
+<p>日期对象<br>valueOf方法返回实例对象距离时间零点（1970年1月1日00:00:00 UTC）对应的毫秒数，该方法等同于getTime方法</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">new</span> <span class="selector-tag">Date</span>()</div><div class="line"><span class="selector-tag">Thu</span> <span class="selector-tag">Jun</span> <span class="selector-tag">21</span> <span class="selector-tag">2018</span> <span class="selector-tag">16</span><span class="selector-pseudo">:43</span><span class="selector-pseudo">:00</span> <span class="selector-tag">GMT</span>+<span class="selector-tag">0800</span> (中国标准时间)</div><div class="line"><span class="selector-tag">new</span> <span class="selector-tag">Date</span>()<span class="selector-class">.valueOf</span>()</div><div class="line"><span class="selector-tag">1529570590072</span></div></pre></td></tr></table></figure>
+<h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><p>toString方法也是对象的通用方法，数组的toString方法返回数组的字符串形式。</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">var arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.toString() <span class="comment">// "1,2,3"</span></div><div class="line"></div><div class="line">var arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]];</div><div class="line">arr.toString() <span class="comment">// "1,2,3,4,5,6"</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line">Thu Jun <span class="number">21</span> <span class="number">2018</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">00</span> GMT+<span class="number">0800</span> (中国标准时间)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>().valueOf()</div><div class="line"><span class="number">1529570590072</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="literal">undefined</span></div><div class="line">a.toString();</div><div class="line"><span class="string">"1"</span></div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>().toString()</div><div class="line"><span class="string">"Thu Jun 21 2018 17:15:52 GMT+0800 (中国标准时间)"</span></div></pre></td></tr></table></figure>
+<h3 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h3><p>slice方法用于提取目标数组的一部分，返回一个新数组，原数组不变。</p>
+<figure class="highlight prolog"><table><tr><td class="code"><pre><div class="line">var a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</div><div class="line">a.slice(<span class="number">0</span>) // [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]</div><div class="line">a.slice(<span class="number">1</span>) // [<span class="string">"b"</span>, <span class="string">"c"</span>]</div></pre></td></tr></table></figure>
+<p><code>String.prototype.slice()</code><br>slice方法用于从原字符串取出子字符串并返回，不改变原字符串。它的第一个参数是子字符串的开始位置，第二个参数是子字符串的结束位置（不含该位置）。</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><div class="line"><span class="string">'JavaScript'</span>.slice(<span class="number">0</span>, <span class="number">4</span>) <span class="regexp">//</span> <span class="string">"Java"</span></div></pre></td></tr></table></figure>
+<p>控制文字长度</p>
+<figure class="highlight clojure"><table><tr><td class="code"><pre><div class="line">&#123;&#123;item.user_name.slice(<span class="number">0</span>,<span class="number">4</span>)&#125;&#125;</div></pre></td></tr></table></figure>
+<h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h3><p>indexOf方法返回给定元素在数组中第一次出现的位置，如果没有出现则返回-1。</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</div><div class="line">a.indexOf(<span class="string">'b'</span>) <span class="comment">// 1</span></div><div class="line">a.indexOf(<span class="string">'y'</span>) <span class="comment">// -1</span></div></pre></td></tr></table></figure>
+<p><code>String.prototype.indexOf()</code></p>
+<p>indexOf方法用于确定一个字符串在另一个字符串中第一次出现的位置，返回结果是匹配开始的位置。如果返回-1，就表示不匹配。</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><div class="line">'hello world'.indexOf('o') <span class="comment">// 4</span></div><div class="line">'JavaScript'.indexOf('script') <span class="comment">// -1</span></div></pre></td></tr></table></figure>
+<p>截取url</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><div class="line"><span class="built_in">var</span> <span class="built_in">index</span> = location.href.indexOf(<span class="string">"order_id"</span>);</div><div class="line"><span class="built_in">var</span> re_url = location.href.slice(<span class="number">0</span>,<span class="built_in">index</span>);</div></pre></td></tr></table></figure>
+<p>根据不同环境设置token</p>
+<figure class="highlight xquery"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> host = location.host,token = <span class="string">''</span>;</div><div class="line"><span class="keyword">if</span>( host.indexOf(<span class="string">'localhost'</span>) !== -<span class="number">1</span> || host.indexOf(<span class="string">'127.0.0.1'</span>) !== -<span class="number">1</span> )&#123;</div><div class="line">    token = <span class="string">''</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="splice"><a href="#splice" class="headerlink" title="splice()"></a>splice()</h3><p>splice方法用于删除原数组的一部分成员，并可以在删除的位置添加新的数组成员，返回值是被删除的元素。注意，该方法会改变原数组。<br>splice的第一个参数是删除的起始位置（从0开始），第二个参数是被删除的元素个数。如果后面还有更多的参数，则表示这些就是要被插入数组的新元素。</p>
+<figure class="highlight prolog"><table><tr><td class="code"><pre><div class="line">var a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>];</div><div class="line">a.splice(<span class="number">4</span>, <span class="number">2</span>) // [<span class="string">"e"</span>, <span class="string">"f"</span>]</div><div class="line">a // [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>]</div></pre></td></tr></table></figure>
+<h3 id="push-、pop-，shift-、unshift-，concat"><a href="#push-、pop-，shift-、unshift-，concat" class="headerlink" title="push()、pop()，shift()、unshift()，concat()"></a>push()、pop()，shift()、unshift()，concat()</h3><h3 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h3><p>join方法以指定参数作为分隔符，将所有数组成员连接为一个字符串返回。如果不提供参数，默认用逗号分隔。</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line">a.<span class="keyword">join</span>(<span class="string">' '</span>) <span class="comment">// '1 2 3 4'</span></div><div class="line">a.<span class="keyword">join</span>(<span class="string">' | '</span>) <span class="comment">// "1 | 2 | 3 | 4"</span></div><div class="line">a.<span class="keyword">join</span>() <span class="comment">// "1,2,3,4"</span></div></pre></td></tr></table></figure>
+<h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><p>map方法将数组的所有成员依次传入参数函数，然后把每一次的执行结果组成一个新数组返回。</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"></div><div class="line">numbers.map(<span class="function"><span class="keyword">function</span> <span class="params">(n)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> n + <span class="number">1</span>;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// [2, 3, 4]</span></div><div class="line"></div><div class="line">numbers</div><div class="line"><span class="comment">// [1, 2, 3]</span></div></pre></td></tr></table></figure>
+<p>map方法接受一个函数作为参数。该函数调用时，map方法向它传入三个参数：当前成员、当前位置和数组本身。</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="keyword">function</span><span class="params">(elem, index, arr)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> elem * index;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// [0, 2, 6]</span></div></pre></td></tr></table></figure>
+<p>map方法还可以接受第二个参数，用来绑定回调函数内部的this变量</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>].map(<span class="function"><span class="keyword">function</span> <span class="params">(e)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>[e];</div><div class="line">&#125;, arr)</div><div class="line"><span class="comment">// ['b', 'c']</span></div></pre></td></tr></table></figure>
+<p>上面代码通过map方法的第二个参数，将回调函数内部的this对象，指向arr数组。</p>
+<h3 id="Object-keys-amp-forEach"><a href="#Object-keys-amp-forEach" class="headerlink" title="Object.keys() &amp; forEach()"></a>Object.keys() &amp; forEach()</h3><p>Object.keys()用于获得由对象属性名组成的数组，可与数组遍历相结合使用，用起来效果杠杠滴。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">//创建对象</span></div><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">    ChineseName: <span class="string">"wjh"</span>,</div><div class="line">    EnglishName: <span class="string">"Bruce"</span>,</div><div class="line">    age: <span class="number">10</span>,</div><div class="line">    school:<span class="string">"HQ University"</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//用forEach()进行遍历</span></div><div class="line"><span class="keyword">var</span> keys = <span class="built_in">Object</span>.keys(person).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">tz</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"person "</span>, tz, <span class="string">": "</span>, person[tz]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>把url参数的类对象模式转化为对象</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> keys = <span class="built_in">Object</span>.keys( to.query );</div><div class="line"><span class="keyword">if</span> ( keys.length )&#123;</div><div class="line">		query = <span class="string">'?'</span>;</div><div class="line">		keys.forEach( <span class="function"><span class="params">key</span> =&gt;</span> &#123;</div><div class="line">		<span class="keyword">if</span>( keys.length == <span class="number">1</span> )&#123;</div><div class="line">				query += <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;to.query[key]&#125;</span>`</span></div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			   query += <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;to.query[key]&#125;</span>&amp;`</span></div><div class="line">		&#125;</div><div class="line">	&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h3><p>filter方法用于过滤数组成员，满足条件的成员组成一个新数组返回。</p>
+<p>它的参数是一个函数，所有数组成员依次执行该函数，返回结果为true的成员组成一个新数组返回。该方法不会改变原数组。</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].filter(function (elem) &#123;</div><div class="line">  return (elem &gt; <span class="number">3</span>);</div><div class="line">&#125;)</div><div class="line"><span class="comment">// [4, 5]</span></div></pre></td></tr></table></figure>
+<h3 id="some-，every"><a href="#some-，every" class="headerlink" title="some()，every()"></a>some()，every()</h3><p>这两个方法类似“断言”（assert），返回一个布尔值，表示判断数组成员是否符合某种条件。</p>
+<p>它们接受一个函数作为参数，所有数组成员依次执行该函数。该函数接受三个参数：当前成员、当前位置和整个数组，然后返回一个布尔值。</p>
+<p>some方法是只要一个成员的返回值是true，则整个some方法的返回值就是true，否则返回false。<br>every方法是所有成员的返回值都是true，整个every方法才返回true，否则返回false。<br>是否是苹果机型的判断</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">isIphone:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="keyword">let</span> ua = navigator.userAgent,</div><div class="line">				Agents = [<span class="string">"iPhone"</span>, <span class="string">"iPad"</span>, <span class="string">"iPod"</span>];</div><div class="line">			<span class="keyword">return</span> Agents.some(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>)</span>&#123;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">RegExp</span>(v,<span class="string">'i'</span>).test(ua);</div><div class="line">			&#125;)</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a>reduce()</h3><p>reduce方法和reduceRight方法的第一个参数都是一个函数。该函数接受以下四个参数。<br>我们在reduce的第二个参数里面初始了回调函数第一个参数的类型和值<br>获取url任意参数值的方法</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line">getParams:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</div><div class="line">            <span class="keyword">var</span> search = location.href.split(<span class="string">"?"</span>)[<span class="number">1</span>];</div><div class="line">            <span class="keyword">if</span>(!search)&#123;</div><div class="line">                <span class="keyword">return</span> &#123;&#125;;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">var</span> params = search.split(<span class="string">"&amp;"</span>);</div><div class="line">            <span class="keyword">return</span> params.reduce(<span class="function"><span class="keyword">function</span><span class="params">(res,items)</span></span>&#123;</div><div class="line">                <span class="keyword">var</span> parts = items.split(<span class="string">"="</span>);</div><div class="line">                res[parts[<span class="number">0</span>]] = parts[<span class="number">1</span>] + <span class="string">""</span>;</div><div class="line">                <span class="keyword">return</span> res;</div><div class="line">            &#125;,&#123;&#125;);</div><div class="line">        &#125;,</div></pre></td></tr></table></figure>
+<p>{}初始化res为空对象</p>
+<h2 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h2><h3 id="Date"><a href="#Date" class="headerlink" title="Date()"></a>Date()</h3><p>Date对象可以作为普通函数直接调用，返回一个代表当前时间的字符串。<br><code>·Tue Jun 26 2018 10:19:28 GMT+0800 (中国标准时间)·</code><br>这个对象里面可以加各种参数，返回的都是如上字符串显示<br>Date还可以当作构造函数使用。对它使用new命令，会返回一个Date对象的实例。如果不加参数，实例代表的就是当前时间。<br><code>new Date();</code></p>
+<h3 id="Date-now"><a href="#Date-now" class="headerlink" title="Date.now()"></a>Date.now()</h3><p>Date.now方法返回当前时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数，相当于 Unix 时间戳乘以1000。</p>
+<h3 id="Date-parse"><a href="#Date-parse" class="headerlink" title="Date.parse()"></a>Date.parse()</h3><p>Date.parse方法用来解析日期字符串，返回该时间距离时间零点（1970年1月1日 00:00:00）的毫秒数。</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><div class="line">Date.parse('<span class="number">2018/06/26</span> 23:13:40')</div><div class="line"><span class="number">1530026020000</span></div></pre></td></tr></table></figure>
+<h3 id="Date-UTC"><a href="#Date-UTC" class="headerlink" title="Date.UTC()"></a>Date.UTC()</h3><p>Date.UTC方法接受年、月、日等变量作为参数，返回该时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数。</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 用法</span></div><div class="line">Date.UTC(<span class="number">2011</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">567</span>)</div><div class="line"><span class="comment">// 1293847384567</span></div></pre></td></tr></table></figure>
+<p>该方法的参数用法与Date构造函数完全一致，比如月从0开始计算，日期从1开始计算。区别在于Date.UTC方法的参数，会被解释为 UTC 时间（世界标准时间），Date构造函数的参数会被解释为当前时区的时间。</p>
+<p><a href="http://javascript.ruanyifeng.com/stdlib/date.html" target="_blank" rel="external">http://javascript.ruanyifeng.com/stdlib/date.html</a></p>
+<h2 id="RegExp对象"><a href="#RegExp对象" class="headerlink" title="RegExp对象"></a>RegExp对象</h2><h2 id="包装对象"><a href="#包装对象" class="headerlink" title="包装对象"></a>包装对象</h2><p>使用双重的否运算符（!）也可以将任意值转为对应的布尔值。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><div class="line"><span class="type">!!undefined</span> <span class="string">//</span> <span class="literal">false</span></div><div class="line"><span class="type">!!null</span> <span class="string">//</span> <span class="literal">false</span></div><div class="line"><span class="string">!!0</span> <span class="string">//</span> <span class="literal">false</span></div><div class="line"><span class="string">!!''</span> <span class="string">//</span> <span class="literal">false</span></div><div class="line"><span class="type">!!NaN</span> <span class="string">//</span> <span class="literal">false</span></div><div class="line"><span class="string">!!1</span> <span class="string">//</span> <span class="literal">true</span></div><div class="line"><span class="string">!!'false'</span> <span class="string">//</span> <span class="literal">true</span></div><div class="line"><span class="string">!![]</span> <span class="string">//</span> <span class="literal">true</span></div><div class="line"><span class="string">!!&#123;&#125;</span> <span class="string">//</span> <span class="literal">true</span></div><div class="line"><span class="type">!!function</span><span class="string">()&#123;&#125;</span> <span class="string">//</span> <span class="literal">true</span></div><div class="line"><span class="string">!!/foo/</span> <span class="string">//</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<p>Number、String和Boolean如果不作为构造函数调用（即调用时不加new），常常用于将任意类型的值转为数值、字符串和布尔值。</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">Number</span><span class="params">(<span class="number">123</span>)</span></span> <span class="comment">// 123</span></div><div class="line"><span class="function"><span class="title">String</span><span class="params">(<span class="string">'abc'</span>)</span></span> <span class="comment">// "abc"</span></div><div class="line"><span class="function"><span class="title">Boolean</span><span class="params">(true)</span></span> <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>总结一下，这三个对象作为构造函数使用（带有new）时，可以将原始类型的值转为对象；作为普通函数使用时（不带有new），可以将任意类型的值，转为原始类型的值。</p>
+<h3 id="Boolean-函数的类型转换作用"><a href="#Boolean-函数的类型转换作用" class="headerlink" title="Boolean 函数的类型转换作用"></a>Boolean 函数的类型转换作用</h3><p>Boolean对象除了可以作为构造函数，还可以单独使用，将任意值转为布尔值。这时Boolean就是一个单纯的工具方法。<br>对于一些特殊值，Boolean对象前面加不加new，会得到完全相反的结果，必须小心</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">Boolean</span>(<span class="literal">false</span>)) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'true'</span>);</div><div class="line">&#125; <span class="comment">// 无输出</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>)) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'true'</span>);</div><div class="line">&#125; <span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="built_in">Boolean</span>(<span class="literal">null</span>)) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'true'</span>);</div><div class="line">&#125; <span class="comment">// 无输出</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">null</span>)) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'true'</span>);</div><div class="line">&#125; <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h2 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h2><h3 id="Number-prototype-toFixed"><a href="#Number-prototype-toFixed" class="headerlink" title="Number.prototype.toFixed()"></a>Number.prototype.toFixed()</h3><p>toFixed方法先将一个数转为指定位数的小数，然后返回这个小数对应的字符串。</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">(<span class="number">10</span>).toFixed(<span class="number">2</span>) <span class="comment">// "10.00"</span></div><div class="line"><span class="number">10.005</span>.toFixed(<span class="number">2</span>) <span class="comment">// "10.01"</span></div></pre></td></tr></table></figure>
+<p>使用：转化时间</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><div class="line">getTime(<span class="built_in">time</span>)&#123;</div><div class="line">    <span class="keyword">return</span> (<span class="built_in">time</span>/<span class="number">3600</span>).toFixed(<span class="number">2</span>) + <span class="string">'小时'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h2><p>Math是 JavaScript 的原生对象，提供各种数学功能。该对象不是构造函数，不能生成实例，所有的属性和方法都必须在Math对象上调用。<br>Math对象提供以下一些静态方法。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.abs</span>()：绝对值</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.ceil</span>()：向上取整</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.floor</span>()：向下取整</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.max</span>()：最大值</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.min</span>()：最小值</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.pow</span>()：指数运算</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.sqrt</span>()：平方根</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.log</span>()：自然对数</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.exp</span>()：<span class="selector-tag">e</span>的指数</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.round</span>()：四舍五入</div><div class="line"><span class="selector-tag">Math</span><span class="selector-class">.random</span>()：随机数</div></pre></td></tr></table></figure>
+<h3 id="Math-floor"><a href="#Math-floor" class="headerlink" title="Math.floor()"></a>Math.floor()</h3><p>方法返回小于参数值的最大整数（地板值）。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">Math.<span class="built_in">floor</span>(<span class="number">3.2</span>) <span class="comment">// 3</span></div><div class="line">Math.<span class="built_in">floor</span>(<span class="number">-3.2</span>) <span class="comment">// -4</span></div></pre></td></tr></table></figure>
+<p>时间倒数取整</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">h = Math.floor(leftTime/<span class="number">1000</span>/<span class="number">60</span>/<span class="number">60</span>%<span class="number">48</span>),</div><div class="line">m = Math.floor(leftTime/<span class="number">1000</span>/<span class="number">60</span>%<span class="number">60</span>),</div><div class="line">s = Math.floor(leftTime/<span class="number">1000</span>%<span class="number">60</span>);</div></pre></td></tr></table></figure>
+<h3 id="Math-ceil"><a href="#Math-ceil" class="headerlink" title="Math.ceil()"></a>Math.ceil()</h3><p>方法返回大于参数值的最小整数（天花板值）。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">Math.<span class="built_in">ceil</span>(<span class="number">3.2</span>) <span class="comment">// 4</span></div><div class="line">Math.<span class="built_in">ceil</span>(<span class="number">-3.2</span>) <span class="comment">// -3</span></div></pre></td></tr></table></figure>
+<h3 id="Math-round"><a href="#Math-round" class="headerlink" title="Math.round()"></a>Math.round()</h3><p>Math.round方法用于四舍五入。<br>注意，它对负数的处理（主要是对0.5的处理）。</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><div class="line">Math.<span class="built-in">round</span>(<span class="number">-1.1</span>) <span class="comment">// -1</span></div><div class="line">Math.<span class="built-in">round</span>(<span class="number">-1.5</span>) <span class="comment">// -1</span></div><div class="line">Math.<span class="built-in">round</span>(<span class="number">-1.6</span>) <span class="comment">// -2</span></div></pre></td></tr></table></figure>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/2018/05/28/promise/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">关于本站</h1>
+        <div class="custom-widget-content">
+          
+          全栈开发 | 前端  | css | javascript | 烹饪
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">与我联系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/shuangmuyingzi" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="http://weibo.com/shuangmuyingzi" class="icon icon-weibo" target="_blank">weibo</a>
+            
+              <a href="mailto:466570690lzy@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站内搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>爱煲汤的程序猿 &copy; 2018</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
