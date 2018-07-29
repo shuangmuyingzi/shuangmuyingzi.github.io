@@ -18,7 +18,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="爱煲汤的程序猿"/>
+      <meta property="og:title" content="移动端的彩蛋"/>
   
   <!--Open Graph Description-->
   
@@ -28,7 +28,7 @@
   <meta property="og:site_name" content="爱煲汤的程序猿"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -37,7 +37,7 @@
 
   <!-- Title -->
   
-  <title>归档：2018/4 - 爱煲汤的程序猿</title>
+  <title>移动端的彩蛋 - 爱煲汤的程序猿</title>
 
 
   <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
@@ -109,125 +109,64 @@
 
 
   <!-- Main Content -->
-  
-
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">2018/4</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy
-          1. group site.posts by year
-          2. sort posts-in-one-year by Month and Day
-        -->
-        
-
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            移动端的彩蛋
             
-  <li>
-    <span class="date">
-      2018-07-28
-    </span>
-    <a href="/2018/07/28/mobile/" class="title">
-      移动端的彩蛋
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-06-28
-    </span>
-    <a href="/2018/06/28/js/" class="title">
-      js基础
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-05-28
-    </span>
-    <a href="/2018/05/28/promise/" class="title">
-      Promise学习
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-04-28
-    </span>
-    <a href="/2018/04/28/git/" class="title">
-      总有后悔药吃的git
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-03-28
-    </span>
-    <a href="/2018/03/28/css/" class="title">
-      重拾那些逐渐退化的CSS能力
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-02-27
-    </span>
-    <a href="/2018/02/27/recursion/" class="title">
-      js递归
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-01-26
-    </span>
-    <a href="/2018/01/26/debounce-throttle/" class="title">
-      js简单的防抖跟节流
-    </a>
-  </li>
-
-
-          </ul>
-        
-          <h2 class="year">2017</h2>
-          <ul class="list">
+          </h1>
+          <p class="posted-on">
+          2018-07-28
+          </p>
+          <div class="tags-links">
             
-  <li>
-    <span class="date">
-      2017-12-28
-    </span>
-    <a href="/2017/12/28/guide/" class="title">
-      JavaScript guide
-    </a>
-  </li>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content">
+          <p>本文会持续更新做移动端开发的时候遇到的坑或者是需要注意的点。</p>
+<a id="more"></a>
+<h1 id="关于图片"><a href="#关于图片" class="headerlink" title="关于图片"></a>关于图片</h1><h2 id="阻止移动端浏览器点击图片会放大的几种方法"><a href="#阻止移动端浏览器点击图片会放大的几种方法" class="headerlink" title="阻止移动端浏览器点击图片会放大的几种方法"></a>阻止移动端浏览器点击图片会放大的几种方法</h2><p>下面介绍几种方法：<br>1.在img元素上添加 onclick=”return false”</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><div class="line">&lt;img <span class="attribute">src</span>=<span class="string">"a.png"</span> <span class="attribute">onclick</span>=<span class="string">"return false"</span> /&gt;</div></pre></td></tr></table></figure>
+<p>2.图片用背景图的方式插入<br>3.使用js事件阻止默认行为的方法！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.getElementById(<span class="string">'banner'</span>);</div><div class="line">img.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">　　e.preventDefault();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="拼接图片时的缝隙问题"><a href="#拼接图片时的缝隙问题" class="headerlink" title="拼接图片时的缝隙问题"></a>拼接图片时的缝隙问题</h2><p>一般如果图切得好是不会出现缝隙的问题，但是有时候出现的话也有办法处理。<br>之前是说可以给img标签的父级元素设置font-size:0.或者去掉<img>标签之间的空格，但是现在用着发现不起作用了，然后就寻找另一些的方式。<br>1、将img显示设置成  display：block;</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><div class="line">img&#123;<span class="built_in">display</span>：<span class="built_in">block</span>;&#125;</div></pre></td></tr></table></figure>
+<p>2、可以在img上加这个样式，让图片按照底部对齐，就可消除缝隙</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><div class="line"><span class="attribute">vertical-align</span>: bottom;</div></pre></td></tr></table></figure>
+<p>但是如果是背景图拼接之间的缝隙呢</p>
 
-  <li>
-    <span class="date">
-      2017-11-23
-    </span>
-    <a href="/2017/11/23/npm/" class="title">
-      NPM — JavaScript 的包管理器
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2017-10-31
-    </span>
-    <a href="/2017/10/31/websocket/" class="title">
-      简单的 Web Socket 客户端
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
+        </div>
+      </article>
     </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/2018/06/28/js/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
   </div>
 </div>
 
