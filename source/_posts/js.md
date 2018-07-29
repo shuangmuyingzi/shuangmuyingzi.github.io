@@ -254,6 +254,67 @@ Date.UTC(2011, 0, 1, 2, 3, 4, 567)
 
 http://javascript.ruanyifeng.com/stdlib/date.html
 ## RegExp对象
+如果正则表示式包含圆括号（即含有“组匹配”），则返回的数组会包括多个成员。第一个成员是整个匹配成功的结果，后面的成员就是圆括号对应的匹配成功的组。也就是说，第二个成员对应第一个括号，第三个成员对应第二个括号，以此类推。整个数组的length属性等于组匹配的数量再加1。
+例子：
+
+```
+var type = function (o){
+  var s = Object.prototype.toString.call(o);
+  return s.match(/\[object (.*?)\]/)[1].toLowerCase();
+};
+
+type({}); // "object"
+type([]); // "array"
+```
+\s 匹配空格 （包括换行符、制表符、空格符等），相等于[ \t\r\n\v\f]
+（1）点字符（.)
+点字符（.）匹配除回车（\r）、换行(\n) 、行分隔符（\u2028）和段分隔符（\u2029）以外的所有字符。
+（2）位置字符
+位置字符用来提示字符所处的位置，主要有两个字符。
+^ 表示字符串的开始位置
+$ 表示字符串的结束位置
+（3）选择符（|）
+竖线符号（|）在正则表达式中表示“或关系”（OR），即cat|dog表示匹配cat或dog。
+正则表达式中，需要反斜杠转义的，一共有12个字符：^、.、[、$、(、)、|、*、+、?、{和\\。
+
+字符类
+字符类（class）表示有一系列字符可供选择，只要匹配其中一个就可以了。所有可供选择的字符都放在方括号内，比如[xyz] 表示x、y、z之中任选一个匹配。
+量词符
+量词符用来设定某个模式出现的次数。
+
+? 问号表示某个模式出现0次或1次，等同于{0, 1}。
+* 星号表示某个模式出现0次或多次，等同于{0,}。
++ 加号表示某个模式出现1次或多次，等同于{1,}。
+
+预定义模式指的是某些常见模式的简写方式。
+\d 匹配0-9之间的任一数字，相当于[0-9]。
+\D 匹配所有0-9以外的字符，相当于[^0-9]。
+\w 匹配任意的字母、数字和下划线，相当于[A-Za-z0-9_]。
+\W 除所有字母、数字和下划线以外的字符，相当于[^A-Za-z0-9_]。
+\s 匹配空格（包括换行符、制表符、空格符等），相等于[ \t\r\n\v\f]。
+\S 匹配非空格的字符，相当于[^ \t\r\n\v\f]。
+\b 匹配词的边界。
+\B 匹配非词边界，即在词的内部。
+重复类
+模式的精确匹配次数，使用大括号（{}）表示。{n}表示恰好重复n次，{n,}表示至少重复n次，{n,m}表示重复不少于n次，不多于m次。
+量词符
+量词符用来设定某个模式出现的次数。
+
+? 问号表示某个模式出现0次或1次，等同于{0, 1}。
+* 星号表示某个模式出现0次或多次，等同于{0,}。
++ 加号表示某个模式出现1次或多次，等同于{1,}。
+
+上一小节的三个量词符，默认情况下都是最大可能匹配，即匹配直到下一个字符不满足匹配规则为止。这被称为贪婪模式。
+var s = 'aaa';
+s.match(/a+/) // ["aaa"]
+上面代码中，模式是/a+/，表示匹配1个a或多个a，那么到底会匹配几个a呢？因为默认是贪婪模式，会一直匹配到字符a不出现为止，所以匹配结果是3个a。
+
+如果想将贪婪模式改为非贪婪模式，可以在量词符后面加一个问号。
+
+var s = 'aaa';
+s.match(/a+?/) // ["a"]
+*?：表示某个模式出现0次或多次，匹配时采用非贪婪模式。
++?：表示某个模式出现1次或多次，匹配时采用非贪婪模式。
 ## 包装对象
 使用双重的否运算符（!）也可以将任意值转为对应的布尔值。
 
@@ -361,7 +422,171 @@ Math.round(-1.1) // -1
 Math.round(-1.5) // -1
 Math.round(-1.6) // -2
 ```
+### Object.prototype.toLocaleString()
+这个方法的主要作用是留出一个接口，让各种不同的对象实现自己版本的toLocaleString，用来返回针对某些地域的特定的值。目前，主要有三个对象自定义了toLocaleString方法。
+返回当地时间的写法模式
 
+```
+dateFormat:function(time){
+            var unixTimestamp = new Date( time*1000 ) ;
+            var commonTime;
+            commonTime = unixTimestamp.toLocaleString("zh-CN");
+            return commonTime;
+        }
+```
 
+```
+var type = function (o){
+  var s = Object.prototype.toString.call(o);
+  return s.match(/\[object (.*?)\]/)[1].toLowerCase();
+};
 
+type({}); // "object"
+type([]); // "array"
+type(5); // "number"
+type(null); // "null"
+type(); // "undefined"
+type(/abcd/); // "regex"
+type(new Date()); // "date"
+```
+#### location
+`let curPath = location.pathname;`
+如：
+
+```
+http://localhost:8081/courseIndex?channel=123&lin=linziying
+location.pathname
+"/courseIndex"
+location.search
+"?channel=1524653365&lin=linziying"
+
+http://localhost:8081/home/index/index
+location.pathname
+"/home/index/index"
+location.origin
+"http://localhost:8081"
+location.host
+"localhost:8081"
+```
+### replace
+是字符串写在前面，字符串的实例方法
+String.prototype.replace()：按照给定的正则表达式进行替换，返回替换后的字符串
+字符串对象的replace方法可以替换匹配的值。它接受两个参数，第一个是正则表达式，表示搜索模式，第二个是替换的内容。
+下面再来说location.replace
+location.replace 是替换当前页面，如果a页面 跳转到 b页面  b页面 写location.replace（c） 当点击返回按钮时，就会回到a页面，换句话说，location.replace 是清除了本页面的访问记录，直接回到上一个页面
+如果是 b页面href到c页面的话，按c页面的回退按钮，会回到b页面
+### history 对象
+history.replaceState
+
+```
+if( window.history && history.pushState ){
+	history.replaceState({state:1},'','/usercateList');
+}
+```
+## DOM 模型概述
+
+## 错误处理机制
+### try…catch 结构
+一旦发生错误，程序就中止执行了。JavaScript 提供了try...catch结构，允许对错误进行处理，选择是否往下执行。
+
+如果你不确定某些代码是否会报错，就可以把它们放在try...catch代码块之中，便于进一步对错误进行处理。因为一旦报错js会阻塞，然后就卡在那里不执行。
+例如json.parse方法，ocalStorage.setItem在iphone的混合模式下会报错，以及下面这个
+
+```
+dateFormat:function(time){
+    var unixTimestamp = new Date( time*1000 ) ;
+    var commonTime;
+    try{
+        commonTime = unixTimestamp.toLocaleString("zh-CN");
+    }catch(err){
+        console.log(err);
+        commonTime = unixTimestamp.toLocaleString();
+    }
+    return commonTime;
+},
+```
+### document.referrer
+此返回上一页相关HTML代码如下：
+
+```
+<a href="javascript:history.go(-1)" class="header-back jsBack">返回</a>
+```
+在大部分场景下，上面办法可以满足我们的交互需求，但是，在有些时候，上面的代码就有些心有力而气不足，因为当前页面的referrer并不总是存在的。
+
+比方说用户是通过微信分享进来的，直接进入了内页，此时是没有上一页的，返回按钮再怎么点击都没有任何反应，就会让用户很奇怪，十有八九会认为是实现了bug，则会让用户对产品的品质抱有疑虑，那问题可就大了。
+
+怎么办呢！后来我想了一招，那就是如果发现浏览器没有上一页来源信息，我们就把返回按钮的链接改成首页的链接地址，这样无论什么时候，用户点击返回按钮一定是会有反应的，并且返回首页从逻辑上讲也是合情合理的。而这里判断是否有没有来源信息就是使用这里的document.referrer，当浏览器得不到上一页的来源信息的时候，document.referrer的返回值就是空字符串''，于是乎，就有类似下面的代码：
+
+```
+if (document.referrer === '') {
+    // 没有来源页面信息的时候，改成首页URL地址
+    $('.jsBack').attr('href', '/');
+}
+```
+### ajax与HTML5 history pushState/replaceState实例
+
+```
+
+JS代码：
+var eleMenus = $("#choMenu a").bind("click", function(event) {
+    var query = this.href.split("?")[1];
+    if (history.pushState && query && !$(this).hasClass(clMenuOn)) {
+        /*
+            ajax载入~~
+        */
+        
+        // history处理
+        var title = "上海3月开盘项目汇总-" + $(this).text().replace(/\d+$/, "");
+        document.title = title;
+        if (event && /\d/.test(event.button)) {            
+            history.pushState({ title: title }, title, location.href.split("?")[0] + "?" + query);
+        }
+    }
+    return false;
+});
+
+var fnHashTrigger = function(target) {
+    var query = location.href.split("?")[1], eleTarget = target || null;
+    if (typeof query == "undefined") {
+        if (eleTarget = eleMenus.get(0)) {
+            // 如果没有查询字符，则使用第一个导航元素的查询字符内容
+            history.replaceState(null, document.title, location.href.split("#")[0] + "?" + eleTarget.href.split("?")[1]) + location.hash;    
+            fnHashTrigger(eleTarget);
+        }
+    } else {
+        eleMenus.each(function() {
+            if (eleTarget === null && this.href.split("?")[1] === query) {
+                eleTarget = this;
+            }
+        });
+        
+        if (!eleTarget) {
+            // 如果查询序列没有对应的导航菜单，去除查询然后执行回调
+            history.replaceState(null, document.title, location.href.split("?")[0]);    
+            fnHashTrigger();
+        } else {
+            $(eleTarget).trigger("click");
+        }        
+    }    
+};
+if (history.pushState) {
+    window.addEventListener("popstate", function() {
+        fnHashTrigger();                             
+    });
+    
+    // 默认载入
+    fnHashTrigger();
+}
+```
+```
+history.pushState({page: 4}, "title 1", "");
+				if ( window.history && window.history.pushState ) {
+					window.addEventListener("popstate", function () {
+						history.replaceState({page: 4}, "title 1", location.href);
+						location.href = "/";
+					});
+				}
+```
+pushState会促发popstate事件监听，pushState会在历史里面添加记录，返回时是进入到这个地址，而replaceState虽然能改变浏览器url地址但是并不会添加进历史，回退不会进入相应的地址。
+### 类的使用
 
