@@ -233,6 +233,26 @@ Date对象可以作为普通函数直接调用，返回一个代表当前时间�
 这个对象里面可以加各种参数，返回的都是如上字符串显示
 Date还可以当作构造函数使用。对它使用new命令，会返回一个Date对象的实例。如果不加参数，实例代表的就是当前时间。
 `new Date();`
+使用
+
+```
+dateFormat:function(time){
+                time = time * 1000 ;
+                time = new Date(time);
+                var year = time.getFullYear(),
+                    month = time.getMonth() + 1,
+                    date = time.getDate(),
+                    hour = time.getHours(),
+                    minute = time.getMinutes(),
+                    second = time.getSeconds(),
+                    m = month >= 10 ? month : "0" + month,
+                    d = date >= 10 ? date : "0" + date,
+                    h = hour >= 10 ? hour : "0" + hour,
+                    mt = minute >= 10 ? minute : "0" + minute,
+                    s = second >= 10 ? second : "0" + second;
+                return year + "-" + m + "-" + date + " " + h + ":" + mt + ":" + s;
+            }
+```
 ### Date.now()
 Date.now方法返回当前时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数，相当于 Unix 时间戳乘以1000。
 ### Date.parse()
