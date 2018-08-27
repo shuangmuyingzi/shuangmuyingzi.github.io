@@ -344,6 +344,10 @@ async requestData(){
 			this._innerScroll();
 	}
 ```
+### ref触发点击事件
+```
+this.$refs["photos"].click();
+```
 
 
 
