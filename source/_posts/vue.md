@@ -87,11 +87,7 @@ import Pay from './p/pay.vue';
 https://juejin.im/entry/5a9e5a0d5188255584538023
 路由使用
 https://juejin.im/entry/597ab13d5188253e0a62efcb
-### 设置http头部授权
-```
-Vue.http.headers.common['Authorization'] = token;
-Vue.http.options.emulateJSON = true;
-```
+
 ### $nextTick
 延迟执行回调到下一次 DOM 更新循环。在修改数据后调用它，等待 DOM 更新
 

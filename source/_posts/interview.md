@@ -4,7 +4,7 @@ date: 2018-07-28
 photo: https://shuangmuyingzi.github.io/img/npm.jpg
 ---
 
-面试全家桶收集
+面试全家桶收集,主要是用来提醒自己注重基础以及学以致用。
 
 <!--more-->
 ### 参考链接
