@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <meta name="description" content="分享前端开发中的技术文章，分享生活中的灵感与创意，旅行心得等。">
+  
+
+  <!--Author-->
+  
+  <meta name="author" content="Zilia">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="NPM — JavaScript 的包管理器"/>
+  
+  <!--Open Graph Description-->
+  
+      <meta property="og:description" content="分享前端开发中的技术文章，分享生活中的灵感与创意，旅行心得等。" />
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="舍宠博客"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>NPM — JavaScript 的包管理器 - 舍宠博客</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://shuangmuyingzi.github.io/img/logo.jpg" alt="舍宠博客" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  Home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  Archive
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about">
+                
+                  About
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            NPM — JavaScript 的包管理器
+            
+          </h1>
+          <p class="posted-on">
+          2017-11-23
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/js/" rel="tag">
+                  js
+                </a>
+              
+                <a href="/tags/构建/" rel="tag">
+                  构建
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content ">
+          <p>本文主要介绍npm的常用命令，以及如何发布一些常用的js模块化代码到npm上面方便日后的使用，和举例如何把一个vue组件打包发布到npm到最后下载到本地使用的过程。</p>
+<a id="more"></a>
+<p>npm(Node Package Manager)是node的默认模块管理器，一个命令行下的软件，用来安装和管理node模块，同时也可以管理其他开放式的js模块代码。npm有一个好处是除了下载需要的模块外还会帮我们解决依赖关系，同时下载所依赖的模块。</p>
+<h2 id="NPM-——-JavaScript-的包管理器"><a href="#NPM-——-JavaScript-的包管理器" class="headerlink" title="NPM ——  JavaScript 的包管理器"></a>NPM ——  JavaScript 的包管理器</h2><h3 id="npm-help"><a href="#npm-help" class="headerlink" title="npm help"></a>npm help</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">access, adduser, bin, bugs, c, cache, completion, config,</span><br><span class="line">ddp, dedupe, deprecate, dist-tag, docs, doctor, edit,</span><br><span class="line">explore, get, help, help-search, i, init, install,</span><br><span class="line">install-test, it, link, list, ln, login, logout, ls,</span><br><span class="line">outdated, owner, pack, ping, prefix, prune, publish, rb,</span><br><span class="line">rebuild, repo, restart, root, run, run-script, s, se,</span><br><span class="line">search, set, shrinkwrap, star, stars, start, stop, t, team,</span><br><span class="line">test, tst, un, uninstall, unpublish, unstar, up, update, v,</span><br><span class="line">version, view, whoami</span><br></pre></td></tr></table></figure>
+<p>npm help 可以查看所有可使用的命令。</p>
+<h3 id="npm常用指令"><a href="#npm常用指令" class="headerlink" title="npm常用指令"></a>npm常用指令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install 名字      //该命令用于安装模块</span><br><span class="line">npm uninstall 名字    //该命令用于卸载模块</span><br><span class="line">npm run 名字          //该命令用于执行脚本</span><br></pre></td></tr></table></figure>
+<h3 id="如何用npm发布自己的模块"><a href="#如何用npm发布自己的模块" class="headerlink" title="如何用npm发布自己的模块"></a>如何用npm发布自己的模块</h3><p>我们所有下载以及发布的包是存放在这个地址：<a href="https://www.npmjs.com/" target="_blank" rel="noopener">https://www.npmjs.com/</a><br>我们发布一个东西，得要有自己的标识吧，所以得先注册账号。</p>
+<h4 id="1-注册用户"><a href="#1-注册用户" class="headerlink" title="1.注册用户"></a>1.注册用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm adduser</span><br><span class="line">运行该命令后会需要你依次输入</span><br><span class="line">Username:</span><br><span class="line">Password:</span><br><span class="line">Email:</span><br></pre></td></tr></table></figure>
+<h4 id="2-检查"><a href="#2-检查" class="headerlink" title="2.检查"></a>2.检查</h4><p>接下来是需要检查一下有没有注册成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm whoami</span><br></pre></td></tr></table></figure>
+<h4 id="3-建立package"><a href="#3-建立package" class="headerlink" title="3.建立package"></a>3.建立package</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm init</span><br><span class="line">//一路回车</span><br><span class="line">name: (dateFormat) datechange</span><br><span class="line">version: (1.0.0) </span><br><span class="line">description: change date format</span><br><span class="line">entry point: (index.js) </span><br><span class="line">test command: </span><br><span class="line">git repository: https://github.com/shuangmuyingzi/dateFormat.git</span><br><span class="line">keywords: dateformat date datechange</span><br><span class="line">author: lingzi</span><br><span class="line">license: (ISC) </span><br><span class="line">About to write to /Users/linziying/Downloads/npm/dateFormat/package.json:</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;datechange&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;change date format&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;repository&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;git&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;git+https://github.com/shuangmuyingzi/dateFormat.git&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [</span><br><span class="line">    &quot;dateformat&quot;,</span><br><span class="line">    &quot;date&quot;,</span><br><span class="line">    &quot;datechange&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;author&quot;: &quot;lingzi&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;,</span><br><span class="line">  &quot;bugs&quot;: &#123;</span><br><span class="line">    &quot;url&quot;: &quot;https://github.com/shuangmuyingzi/dateFormat/issues&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;homepage&quot;: &quot;https://github.com/shuangmuyingzi/dateFormat#readme&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Is this ok? (yes)</span><br></pre></td></tr></table></figure>
+<p>然后会在该目录下多了个package.json文件</p>
+<h4 id="添加简单的日期转换格式插件"><a href="#添加简单的日期转换格式插件" class="headerlink" title="添加简单的日期转换格式插件"></a>添加简单的日期转换格式插件</h4><p>每次后台数据接口返回的基本是时间戳，往往需要转换成常用的日期格式。那我就以一个简单的日期转换格式小插件为例。把下面代码放到package.json文件同级目录里。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">date.js</span><br><span class="line"></span><br><span class="line">(function(global) &#123;</span><br><span class="line">    var datechange = (function() &#123;</span><br><span class="line">      </span><br><span class="line">      return function (date) &#123;</span><br><span class="line">  </span><br><span class="line">        date = date || new Date;</span><br><span class="line">  </span><br><span class="line">        if(!(date instanceof Date)) &#123;</span><br><span class="line">          date = new Date(date);</span><br><span class="line">        &#125;</span><br><span class="line">  </span><br><span class="line">        if (isNaN(date)) &#123;</span><br><span class="line">          throw TypeError(&apos;Invalid date&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">        let re = date.getFullYear() + &apos;.&apos; + (date.getMonth()+1) + &apos;.&apos; + date.getDate();</span><br><span class="line">        return re</span><br><span class="line">  </span><br><span class="line">      &#125;</span><br><span class="line">  &#125;)()</span><br><span class="line"></span><br><span class="line">  if (typeof define === &apos;function&apos; &amp;&amp; define.amd) &#123;</span><br><span class="line">    define(function () &#123;</span><br><span class="line">      return datechange;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; else if (typeof exports === &apos;object&apos;) &#123;</span><br><span class="line">    module.exports = datechange;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    global.datechange = datechange;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;)(this);</span><br></pre></td></tr></table></figure>
+<h4 id="4-发布"><a href="#4-发布" class="headerlink" title="4.发布"></a>4.发布</h4><p>npm publish<br>记得在推之前先登录npm要不然会报错。如果是再次推送同一个项目记得修改版本号。 </p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save-dev datechange</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var datechange = require(&apos;datechange&apos;);</span><br><span class="line">var now = new Date();</span><br><span class="line">var timeStamp = datechange(now);</span><br></pre></td></tr></table></figure>
+<p>OR</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">'date.js'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">	&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		<span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">		<span class="keyword">var</span> timeStamp = datechange(<span class="number">1511350834583</span>);</span><br><span class="line">		alert(timeStamp)</span><br><span class="line">	&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>先安装后使用，包的名称为package.json里的name属性。<br>具体代码看github:<br><a href="https://github.com/shuangmuyingzi/dateFormat" target="_blank" rel="noopener">https://github.com/shuangmuyingzi/dateFormat</a></p>
+<h3 id="Vue组件如何上传到NPM"><a href="#Vue组件如何上传到NPM" class="headerlink" title="Vue组件如何上传到NPM"></a>Vue组件如何上传到NPM</h3><h4 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h4><p>用webpack把项目打包成JS文件，然后在package.json的 main导出该JS文件。</p>
+<h5 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h5><ul>
+<li><p>vue-cli创建vue简单项目 </p>
+<p>  <code>vue init webpack-simple load-ling-zi</code></p>
+</li>
+<li><p>修改package.json</p>
+<ol>
+<li><p>修改<code>&quot;private&quot;: false</code></p>
+<p> npm默认创建的项目是私有的，如果要发布至npm必须将其公开</p>
+</li>
+<li><p>添加<code>&quot;main&quot;: &quot;dist/build.js&quot;</code></p>
+<p> 通过<code>import loading from &#39;load-ling-zi&#39;</code>引用该组件时，项目会自动找到<code>node_modules/load-ling-zi/dist/build.js</code></p>
+</li>
+</ol>
+</li>
+<li><p>在src加入组件代码App.vue， 并创建我们的导出文件index.js。<br>在index.js中添加：</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import load from &apos;./App.vue&apos;</span><br><span class="line">export default load</span><br><span class="line">//global 情况下 自动安装</span><br><span class="line">if (typeof window !== &apos;undefined&apos; &amp;&amp; window.Vue) &#123;</span><br><span class="line">  window.Vue.component(&apos;load&apos;, load);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>因为最后我们是打包成一个js文件，所以需要修改一下配置文件<code>webpack.config.js</code></p>
+<p> 因为不是所有使用你组件的人都是通过npm按住和impor的很多人是通过<code>&lt;script&gt;</code>直接引入的,我们要将libraryTarget改为umd,以及修改入口文件与设置导出文件目录以及名称。   </p>
+<pre><code>entry: &apos;./src/index.js&apos;,
+output: {
+path: path.resolve(__dirname, &apos;./dist&apos;),
+publicPath: &apos;/dist/&apos;,
+filename: &apos;build.js&apos;,
+library: &apos;load&apos;,
+libraryTarget: &apos;umd&apos;,
+umdNamedDefine: true
+},
+</code></pre></li>
+<li><p>最后需要把<code>.gitignore</code>文件里面的<code>/dist</code>删除掉要不然上传时会忽略掉dist打包的文件。</p>
+<p> 具体代码已放到github：<br> <a href="https://github.com/shuangmuyingzi/loadingModule/tree/master/load/load-ling-zi" target="_blank" rel="noopener">https://github.com/shuangmuyingzi/loadingModule/tree/master/load/load-ling-zi</a></p>
+</li>
+</ul>
+<h5 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h5><p><code>npm publish</code>，具体参考上面步骤。</p>
+<h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><ol>
+<li>Installation</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># install dependencies</span></span><br><span class="line">npm install load-ling-zi -D</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Usage</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;loading v-if=&quot;loading.isShow&quot;&gt;</span><br><span class="line">    &lt;span&gt;&#123;&#123; loading.text &#125;&#125;&lt;/span&gt;</span><br><span class="line">&lt;/loading&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import loading from &apos;load-ling-zi&apos;</span><br><span class="line">    export default &#123;</span><br><span class="line">        components: &#123;</span><br><span class="line">            loading:loading</span><br><span class="line">        &#125;,</span><br><span class="line">        data () &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                loading:&#123;</span><br><span class="line">                    isShow:true,</span><br><span class="line">                    text:&quot;加载中&quot;</span><br><span class="line">                &#125;,   </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h4><p>在main里直接导出Vue组件（.vue文件）<br>具体代码看这里：<br><a href="https://github.com/shuangmuyingzi/loadingModule/tree/master/loading" target="_blank" rel="noopener">https://github.com/shuangmuyingzi/loadingModule/tree/master/loading</a></p>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>关于vue组件、插件的实现方式估计还有很多的办法,本文权当抛砖引玉，水平有限，举的例子也是比较简单，一个好的组件也要考虑更多的可配置性以及通用性，数据的可配置，结构的可配置，样式的可配置等等，es里面模块化的写法也是很多，还有一些直接在<code>&lt;script&gt;</code>引入，所以要考虑如何导出代码能够满足更多场景的使用。</p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+  <div id="disqus_thread">
+    <script type="text/javascript">
+    var disqus_config = function () {
+          this.page.url = window.location.href;
+          this.page.identifier = 'post-npm';
+          this.page.title = 'NPM — JavaScript 的包管理器';
+      };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2017/12/guide/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一页</a>
+        </div>
+      
+      
+        <div class="nav-next">
+          <a href="/2017/10/websocket/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">关于本站</h1>
+        <div class="custom-widget-content">
+          
+          <p align="left">分享前端开发中的技术文章，分享生活中的灵感与创意，旅行心得等</p>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">与我联系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/shuangmuyingzi" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="http://weibo.com/shuangmuyingzi" class="icon icon-weibo" target="_blank">weibo</a>
+            
+              <a href="mailto:466570690lzy@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站内搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>舍宠博客 &copy; 2018</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+<script>
+  var disqus_shortname = 'hinpc';
+
+  
+  var disqus_url = 'https://shuangmuyingzi.github.io/2017/11/npm/';
+  
+
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+
+</body>
+
+</html>
