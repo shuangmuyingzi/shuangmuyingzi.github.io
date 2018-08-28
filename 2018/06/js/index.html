@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <meta name="description" content="分享前端开发中的技术文章，分享生活中的灵感与创意，旅行心得等。">
+  
+
+  <!--Author-->
+  
+  <meta name="author" content="Zilia">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="js基础"/>
+  
+  <!--Open Graph Description-->
+  
+      <meta property="og:description" content="分享前端开发中的技术文章，分享生活中的灵感与创意，旅行心得等。" />
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="舍宠博客"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>js基础 - 舍宠博客</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://shuangmuyingzi.github.io/img/logo.jpg" alt="舍宠博客" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  Home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  Archive
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about">
+                
+                  About
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            js基础
+            
+          </h1>
+          <p class="posted-on">
+          2018-06-28
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/js/" rel="tag">
+                  js
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content ">
+          <p>js基础备忘</p>
+<a id="more"></a>
+<h3 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h3><p>valueOf方法是一个所有对象都拥有的方法，表示对该对象求值。不同对象的valueOf方法不尽一致，数组的valueOf方法返回数组本身。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">arr.valueOf() // [1, 2, 3]</span><br></pre></td></tr></table></figure>
+<p>日期对象<br>valueOf方法返回实例对象距离时间零点（1970年1月1日00:00:00 UTC）对应的毫秒数，该方法等同于getTime方法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new Date()</span><br><span class="line">Thu Jun 21 2018 16:43:00 GMT+0800 (中国标准时间)</span><br><span class="line">new Date().valueOf()</span><br><span class="line">1529570590072</span><br></pre></td></tr></table></figure>
+<h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><p>toString方法也是对象的通用方法，数组的toString方法返回数组的字符串形式。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">arr.toString() // &quot;1,2,3&quot;</span><br><span class="line"></span><br><span class="line">var arr = [1, 2, 3, [4, 5, 6]];</span><br><span class="line">arr.toString() // &quot;1,2,3,4,5,6&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new Date()</span><br><span class="line">Thu Jun 21 2018 16:43:00 GMT+0800 (中国标准时间)</span><br><span class="line">new Date().valueOf()</span><br><span class="line">1529570590072</span><br><span class="line">var a = 1;</span><br><span class="line">undefined</span><br><span class="line">a.toString();</span><br><span class="line">&quot;1&quot;</span><br><span class="line">new Date().toString()</span><br><span class="line">&quot;Thu Jun 21 2018 17:15:52 GMT+0800 (中国标准时间)&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h3><p>slice方法用于提取目标数组的一部分，返回一个新数组，原数组不变。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var a = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];</span><br><span class="line">a.slice(0) // [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span><br><span class="line">a.slice(1) // [&quot;b&quot;, &quot;c&quot;]</span><br></pre></td></tr></table></figure>
+<p><code>String.prototype.slice()</code><br>slice方法用于从原字符串取出子字符串并返回，不改变原字符串。它的第一个参数是子字符串的开始位置，第二个参数是子字符串的结束位置（不含该位置）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&apos;JavaScript&apos;.slice(0, 4) // &quot;Java&quot;</span><br></pre></td></tr></table></figure>
+<p>控制文字长度</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&#123;item.user_name.slice(0,4)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h3><p>indexOf方法返回给定元素在数组中第一次出现的位置，如果没有出现则返回-1。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var a = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];</span><br><span class="line">a.indexOf(&apos;b&apos;) // 1</span><br><span class="line">a.indexOf(&apos;y&apos;) // -1</span><br></pre></td></tr></table></figure>
+<p><code>String.prototype.indexOf()</code></p>
+<p>indexOf方法用于确定一个字符串在另一个字符串中第一次出现的位置，返回结果是匹配开始的位置。如果返回-1，就表示不匹配。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&apos;hello world&apos;.indexOf(&apos;o&apos;) // 4</span><br><span class="line">&apos;JavaScript&apos;.indexOf(&apos;script&apos;) // -1</span><br></pre></td></tr></table></figure>
+<p>截取url</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var index = location.href.indexOf(&quot;order_id&quot;);</span><br><span class="line">var re_url = location.href.slice(0,index);</span><br></pre></td></tr></table></figure>
+<p>根据不同环境设置token</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let host = location.host,token = &apos;&apos;;</span><br><span class="line">if( host.indexOf(&apos;localhost&apos;) !== -1 || host.indexOf(&apos;127.0.0.1&apos;) !== -1 )&#123;</span><br><span class="line">    token = &apos;&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="splice"><a href="#splice" class="headerlink" title="splice()"></a>splice()</h3><p>splice方法用于删除原数组的一部分成员，并可以在删除的位置添加新的数组成员，返回值是被删除的元素。注意，该方法会改变原数组。<br>splice的第一个参数是删除的起始位置（从0开始），第二个参数是被删除的元素个数。如果后面还有更多的参数，则表示这些就是要被插入数组的新元素。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var a = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;];</span><br><span class="line">a.splice(4, 2) // [&quot;e&quot;, &quot;f&quot;]</span><br><span class="line">a // [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]</span><br></pre></td></tr></table></figure>
+<h3 id="push-、pop-，shift-、unshift-，concat"><a href="#push-、pop-，shift-、unshift-，concat" class="headerlink" title="push()、pop()，shift()、unshift()，concat()"></a>push()、pop()，shift()、unshift()，concat()</h3><h3 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h3><p>join方法以指定参数作为分隔符，将所有数组成员连接为一个字符串返回。如果不提供参数，默认用逗号分隔。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var a = [1, 2, 3, 4];</span><br><span class="line">a.join(&apos; &apos;) // &apos;1 2 3 4&apos;</span><br><span class="line">a.join(&apos; | &apos;) // &quot;1 | 2 | 3 | 4&quot;</span><br><span class="line">a.join() // &quot;1,2,3,4&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><p>map方法将数组的所有成员依次传入参数函数，然后把每一次的执行结果组成一个新数组返回。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var numbers = [1, 2, 3];</span><br><span class="line"></span><br><span class="line">numbers.map(function (n) &#123;</span><br><span class="line">  return n + 1;</span><br><span class="line">&#125;);</span><br><span class="line">// [2, 3, 4]</span><br><span class="line"></span><br><span class="line">numbers</span><br><span class="line">// [1, 2, 3]</span><br></pre></td></tr></table></figure>
+<p>map方法接受一个函数作为参数。该函数调用时，map方法向它传入三个参数：当前成员、当前位置和数组本身。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[1, 2, 3].map(function(elem, index, arr) &#123;</span><br><span class="line">  return elem * index;</span><br><span class="line">&#125;);</span><br><span class="line">// [0, 2, 6]</span><br></pre></td></tr></table></figure>
+<p>map方法还可以接受第二个参数，用来绑定回调函数内部的this变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];</span><br><span class="line">[1, 2].map(function (e) &#123;</span><br><span class="line">  return this[e];</span><br><span class="line">&#125;, arr)</span><br><span class="line">// [&apos;b&apos;, &apos;c&apos;]</span><br></pre></td></tr></table></figure>
+<p>上面代码通过map方法的第二个参数，将回调函数内部的this对象，指向arr数组。</p>
+<h3 id="Object-keys-amp-forEach"><a href="#Object-keys-amp-forEach" class="headerlink" title="Object.keys() &amp; forEach()"></a>Object.keys() &amp; forEach()</h3><p>Object.keys()用于获得由对象属性名组成的数组，可与数组遍历相结合使用，用起来效果杠杠滴。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//创建对象</span><br><span class="line">var person = &#123;</span><br><span class="line">    ChineseName: &quot;wjh&quot;,</span><br><span class="line">    EnglishName: &quot;Bruce&quot;,</span><br><span class="line">    age: 10,</span><br><span class="line">    school:&quot;HQ University&quot;</span><br><span class="line">&#125;</span><br><span class="line">//用forEach()进行遍历</span><br><span class="line">var keys = Object.keys(person).forEach(function (tz) &#123;</span><br><span class="line">    console.log(&quot;person &quot;, tz, &quot;: &quot;, person[tz]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>把url参数的类对象模式转化为对象</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let keys = Object.keys( to.query );</span><br><span class="line">if ( keys.length )&#123;</span><br><span class="line">		query = &apos;?&apos;;</span><br><span class="line">		keys.forEach( key =&gt; &#123;</span><br><span class="line">		if( keys.length == 1 )&#123;</span><br><span class="line">				query += `$&#123;key&#125;=$&#123;to.query[key]&#125;`</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			   query += `$&#123;key&#125;=$&#123;to.query[key]&#125;&amp;`</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h3><p>filter方法用于过滤数组成员，满足条件的成员组成一个新数组返回。</p>
+<p>它的参数是一个函数，所有数组成员依次执行该函数，返回结果为true的成员组成一个新数组返回。该方法不会改变原数组。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[1, 2, 3, 4, 5].filter(function (elem) &#123;</span><br><span class="line">  return (elem &gt; 3);</span><br><span class="line">&#125;)</span><br><span class="line">// [4, 5]</span><br></pre></td></tr></table></figure>
+<h3 id="some-，every"><a href="#some-，every" class="headerlink" title="some()，every()"></a>some()，every()</h3><p>这两个方法类似“断言”（assert），返回一个布尔值，表示判断数组成员是否符合某种条件。</p>
+<p>它们接受一个函数作为参数，所有数组成员依次执行该函数。该函数接受三个参数：当前成员、当前位置和整个数组，然后返回一个布尔值。</p>
+<p>some方法是只要一个成员的返回值是true，则整个some方法的返回值就是true，否则返回false。<br>every方法是所有成员的返回值都是true，整个every方法才返回true，否则返回false。<br>是否是苹果机型的判断</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">isIphone:function()&#123;</span><br><span class="line">			let ua = navigator.userAgent,</span><br><span class="line">				Agents = [&quot;iPhone&quot;, &quot;iPad&quot;, &quot;iPod&quot;];</span><br><span class="line">			return Agents.some(function(v)&#123;</span><br><span class="line">				return new RegExp(v,&apos;i&apos;).test(ua);</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a>reduce()</h3><p>reduce方法和reduceRight方法的第一个参数都是一个函数。该函数接受以下四个参数。<br>我们在reduce的第二个参数里面初始了回调函数第一个参数的类型和值<br>获取url任意参数值的方法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">getParams:function()&#123;</span><br><span class="line">            var search = location.href.split(&quot;?&quot;)[1];</span><br><span class="line">            if(!search)&#123;</span><br><span class="line">                return &#123;&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            var params = search.split(&quot;&amp;&quot;);</span><br><span class="line">            return params.reduce(function(res,items)&#123;</span><br><span class="line">                var parts = items.split(&quot;=&quot;);</span><br><span class="line">                res[parts[0]] = parts[1] + &quot;&quot;;</span><br><span class="line">                return res;</span><br><span class="line">            &#125;,&#123;&#125;);</span><br><span class="line">        &#125;,</span><br></pre></td></tr></table></figure>
+<p>{}初始化res为空对象</p>
+<h2 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h2><h3 id="Date"><a href="#Date" class="headerlink" title="Date()"></a>Date()</h3><p>Date对象可以作为普通函数直接调用，返回一个代表当前时间的字符串。<br><code>·Tue Jun 26 2018 10:19:28 GMT+0800 (中国标准时间)·</code><br>这个对象里面可以加各种参数，返回的都是如上字符串显示<br>Date还可以当作构造函数使用。对它使用new命令，会返回一个Date对象的实例。如果不加参数，实例代表的就是当前时间。<br><code>new Date();</code><br>使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dateFormat:function(time)&#123;</span><br><span class="line">                time = time * 1000 ;</span><br><span class="line">                time = new Date(time);</span><br><span class="line">                var year = time.getFullYear(),</span><br><span class="line">                    month = time.getMonth() + 1,</span><br><span class="line">                    date = time.getDate(),</span><br><span class="line">                    hour = time.getHours(),</span><br><span class="line">                    minute = time.getMinutes(),</span><br><span class="line">                    second = time.getSeconds(),</span><br><span class="line">                    m = month &gt;= 10 ? month : &quot;0&quot; + month,</span><br><span class="line">                    d = date &gt;= 10 ? date : &quot;0&quot; + date,</span><br><span class="line">                    h = hour &gt;= 10 ? hour : &quot;0&quot; + hour,</span><br><span class="line">                    mt = minute &gt;= 10 ? minute : &quot;0&quot; + minute,</span><br><span class="line">                    s = second &gt;= 10 ? second : &quot;0&quot; + second;</span><br><span class="line">                return year + &quot;-&quot; + m + &quot;-&quot; + date + &quot; &quot; + h + &quot;:&quot; + mt + &quot;:&quot; + s;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Date-now"><a href="#Date-now" class="headerlink" title="Date.now()"></a>Date.now()</h3><p>Date.now方法返回当前时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数，相当于 Unix 时间戳乘以1000。</p>
+<h3 id="Date-parse"><a href="#Date-parse" class="headerlink" title="Date.parse()"></a>Date.parse()</h3><p>Date.parse方法用来解析日期字符串，返回该时间距离时间零点（1970年1月1日 00:00:00）的毫秒数。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Date.parse(&apos;2018/06/26 23:13:40&apos;)</span><br><span class="line">1530026020000</span><br></pre></td></tr></table></figure>
+<h3 id="Date-UTC"><a href="#Date-UTC" class="headerlink" title="Date.UTC()"></a>Date.UTC()</h3><p>Date.UTC方法接受年、月、日等变量作为参数，返回该时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 用法</span><br><span class="line">Date.UTC(2011, 0, 1, 2, 3, 4, 567)</span><br><span class="line">// 1293847384567</span><br></pre></td></tr></table></figure>
+<p>该方法的参数用法与Date构造函数完全一致，比如月从0开始计算，日期从1开始计算。区别在于Date.UTC方法的参数，会被解释为 UTC 时间（世界标准时间），Date构造函数的参数会被解释为当前时区的时间。</p>
+<p><a href="http://javascript.ruanyifeng.com/stdlib/date.html" target="_blank" rel="noopener">http://javascript.ruanyifeng.com/stdlib/date.html</a></p>
+<h2 id="RegExp对象"><a href="#RegExp对象" class="headerlink" title="RegExp对象"></a>RegExp对象</h2><p>如果正则表示式包含圆括号（即含有“组匹配”），则返回的数组会包括多个成员。第一个成员是整个匹配成功的结果，后面的成员就是圆括号对应的匹配成功的组。也就是说，第二个成员对应第一个括号，第三个成员对应第二个括号，以此类推。整个数组的length属性等于组匹配的数量再加1。<br>例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var type = function (o)&#123;</span><br><span class="line">  var s = Object.prototype.toString.call(o);</span><br><span class="line">  return s.match(/\[object (.*?)\]/)[1].toLowerCase();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">type(&#123;&#125;); // &quot;object&quot;</span><br><span class="line">type([]); // &quot;array&quot;</span><br></pre></td></tr></table></figure>
+<p>\s 匹配空格 （包括换行符、制表符、空格符等），相等于[ \t\r\n\v\f]<br>（1）点字符（.)<br>点字符（.）匹配除回车（\r）、换行(\n) 、行分隔符（\u2028）和段分隔符（\u2029）以外的所有字符。<br>（2）位置字符<br>位置字符用来提示字符所处的位置，主要有两个字符。<br>^ 表示字符串的开始位置<br>$ 表示字符串的结束位置<br>（3）选择符（|）<br>竖线符号（|）在正则表达式中表示“或关系”（OR），即cat|dog表示匹配cat或dog。<br>正则表达式中，需要反斜杠转义的，一共有12个字符：^、.、[、$、(、)、|、*、+、?、{和\。</p>
+<p>字符类<br>字符类（class）表示有一系列字符可供选择，只要匹配其中一个就可以了。所有可供选择的字符都放在方括号内，比如[xyz] 表示x、y、z之中任选一个匹配。<br>量词符<br>量词符用来设定某个模式出现的次数。</p>
+<p>? 问号表示某个模式出现0次或1次，等同于{0, 1}。</p>
+<ul>
+<li>星号表示某个模式出现0次或多次，等同于{0,}。</li>
+</ul>
+<ul>
+<li>加号表示某个模式出现1次或多次，等同于{1,}。</li>
+</ul>
+<p>预定义模式指的是某些常见模式的简写方式。<br>\d 匹配0-9之间的任一数字，相当于[0-9]。<br>\D 匹配所有0-9以外的字符，相当于[^0-9]。<br>\w 匹配任意的字母、数字和下划线，相当于[A-Za-z0-9_]。<br>\W 除所有字母、数字和下划线以外的字符，相当于[^A-Za-z0-9_]。<br>\s 匹配空格（包括换行符、制表符、空格符等），相等于[ \t\r\n\v\f]。<br>\S 匹配非空格的字符，相当于[^ \t\r\n\v\f]。<br>\b 匹配词的边界。<br>\B 匹配非词边界，即在词的内部。<br>重复类<br>模式的精确匹配次数，使用大括号（{}）表示。{n}表示恰好重复n次，{n,}表示至少重复n次，{n,m}表示重复不少于n次，不多于m次。<br>量词符<br>量词符用来设定某个模式出现的次数。</p>
+<p>? 问号表示某个模式出现0次或1次，等同于{0, 1}。</p>
+<ul>
+<li>星号表示某个模式出现0次或多次，等同于{0,}。</li>
+</ul>
+<ul>
+<li>加号表示某个模式出现1次或多次，等同于{1,}。</li>
+</ul>
+<p>上一小节的三个量词符，默认情况下都是最大可能匹配，即匹配直到下一个字符不满足匹配规则为止。这被称为贪婪模式。<br>var s = ‘aaa’;<br>s.match(/a+/) // [“aaa”]<br>上面代码中，模式是/a+/，表示匹配1个a或多个a，那么到底会匹配几个a呢？因为默认是贪婪模式，会一直匹配到字符a不出现为止，所以匹配结果是3个a。</p>
+<p>如果想将贪婪模式改为非贪婪模式，可以在量词符后面加一个问号。</p>
+<p>var s = ‘aaa’;<br>s.match(/a+?/) // [“a”]<br>*?：表示某个模式出现0次或多次，匹配时采用非贪婪模式。<br>+?：表示某个模式出现1次或多次，匹配时采用非贪婪模式。</p>
+<h2 id="包装对象"><a href="#包装对象" class="headerlink" title="包装对象"></a>包装对象</h2><p>使用双重的否运算符（!）也可以将任意值转为对应的布尔值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">!!undefined // false</span><br><span class="line">!!null // false</span><br><span class="line">!!0 // false</span><br><span class="line">!!&apos;&apos; // false</span><br><span class="line">!!NaN // false</span><br><span class="line">!!1 // true</span><br><span class="line">!!&apos;false&apos; // true</span><br><span class="line">!![] // true</span><br><span class="line">!!&#123;&#125; // true</span><br><span class="line">!!function()&#123;&#125; // true</span><br><span class="line">!!/foo/ // true</span><br></pre></td></tr></table></figure>
+<p>Number、String和Boolean如果不作为构造函数调用（即调用时不加new），常常用于将任意类型的值转为数值、字符串和布尔值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Number(123) // 123</span><br><span class="line">String(&apos;abc&apos;) // &quot;abc&quot;</span><br><span class="line">Boolean(true) // true</span><br></pre></td></tr></table></figure>
+<p>总结一下，这三个对象作为构造函数使用（带有new）时，可以将原始类型的值转为对象；作为普通函数使用时（不带有new），可以将任意类型的值，转为原始类型的值。</p>
+<h3 id="Boolean-函数的类型转换作用"><a href="#Boolean-函数的类型转换作用" class="headerlink" title="Boolean 函数的类型转换作用"></a>Boolean 函数的类型转换作用</h3><p>Boolean对象除了可以作为构造函数，还可以单独使用，将任意值转为布尔值。这时Boolean就是一个单纯的工具方法。<br>对于一些特殊值，Boolean对象前面加不加new，会得到完全相反的结果，必须小心</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (Boolean(false)) &#123;</span><br><span class="line">  console.log(&apos;true&apos;);</span><br><span class="line">&#125; // 无输出</span><br><span class="line"></span><br><span class="line">if (new Boolean(false)) &#123;</span><br><span class="line">  console.log(&apos;true&apos;);</span><br><span class="line">&#125; // true</span><br><span class="line"></span><br><span class="line">if (Boolean(null)) &#123;</span><br><span class="line">  console.log(&apos;true&apos;);</span><br><span class="line">&#125; // 无输出</span><br><span class="line"></span><br><span class="line">if (new Boolean(null)) &#123;</span><br><span class="line">  console.log(&apos;true&apos;);</span><br><span class="line">&#125; // true</span><br></pre></td></tr></table></figure>
+<h2 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h2><h3 id="Number-prototype-toFixed"><a href="#Number-prototype-toFixed" class="headerlink" title="Number.prototype.toFixed()"></a>Number.prototype.toFixed()</h3><p>toFixed方法先将一个数转为指定位数的小数，然后返回这个小数对应的字符串。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(10).toFixed(2) // &quot;10.00&quot;</span><br><span class="line">10.005.toFixed(2) // &quot;10.01&quot;</span><br></pre></td></tr></table></figure>
+<p>使用：转化时间</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">getTime(time)&#123;</span><br><span class="line">    return (time/3600).toFixed(2) + &apos;小时&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h2><p>Math是 JavaScript 的原生对象，提供各种数学功能。该对象不是构造函数，不能生成实例，所有的属性和方法都必须在Math对象上调用。<br>Math对象提供以下一些静态方法。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Math.abs()：绝对值</span><br><span class="line">Math.ceil()：向上取整</span><br><span class="line">Math.floor()：向下取整</span><br><span class="line">Math.max()：最大值</span><br><span class="line">Math.min()：最小值</span><br><span class="line">Math.pow()：指数运算</span><br><span class="line">Math.sqrt()：平方根</span><br><span class="line">Math.log()：自然对数</span><br><span class="line">Math.exp()：e的指数</span><br><span class="line">Math.round()：四舍五入</span><br><span class="line">Math.random()：随机数</span><br></pre></td></tr></table></figure>
+<h3 id="Math-floor"><a href="#Math-floor" class="headerlink" title="Math.floor()"></a>Math.floor()</h3><p>方法返回小于参数值的最大整数（地板值）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Math.floor(3.2) // 3</span><br><span class="line">Math.floor(-3.2) // -4</span><br></pre></td></tr></table></figure>
+<p>时间倒数取整</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">h = Math.floor(leftTime/1000/60/60%48),</span><br><span class="line">m = Math.floor(leftTime/1000/60%60),</span><br><span class="line">s = Math.floor(leftTime/1000%60);</span><br></pre></td></tr></table></figure>
+<h3 id="Math-ceil"><a href="#Math-ceil" class="headerlink" title="Math.ceil()"></a>Math.ceil()</h3><p>方法返回大于参数值的最小整数（天花板值）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Math.ceil(3.2) // 4</span><br><span class="line">Math.ceil(-3.2) // -3</span><br></pre></td></tr></table></figure>
+<h3 id="Math-round"><a href="#Math-round" class="headerlink" title="Math.round()"></a>Math.round()</h3><p>Math.round方法用于四舍五入。<br>注意，它对负数的处理（主要是对0.5的处理）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Math.round(-1.1) // -1</span><br><span class="line">Math.round(-1.5) // -1</span><br><span class="line">Math.round(-1.6) // -2</span><br></pre></td></tr></table></figure>
+<h3 id="Object-prototype-toLocaleString"><a href="#Object-prototype-toLocaleString" class="headerlink" title="Object.prototype.toLocaleString()"></a>Object.prototype.toLocaleString()</h3><p>这个方法的主要作用是留出一个接口，让各种不同的对象实现自己版本的toLocaleString，用来返回针对某些地域的特定的值。目前，主要有三个对象自定义了toLocaleString方法。<br>返回当地时间的写法模式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dateFormat:function(time)&#123;</span><br><span class="line">            var unixTimestamp = new Date( time*1000 ) ;</span><br><span class="line">            var commonTime;</span><br><span class="line">            commonTime = unixTimestamp.toLocaleString(&quot;zh-CN&quot;);</span><br><span class="line">            return commonTime;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var type = function (o)&#123;</span><br><span class="line">  var s = Object.prototype.toString.call(o);</span><br><span class="line">  return s.match(/\[object (.*?)\]/)[1].toLowerCase();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">type(&#123;&#125;); // &quot;object&quot;</span><br><span class="line">type([]); // &quot;array&quot;</span><br><span class="line">type(5); // &quot;number&quot;</span><br><span class="line">type(null); // &quot;null&quot;</span><br><span class="line">type(); // &quot;undefined&quot;</span><br><span class="line">type(/abcd/); // &quot;regex&quot;</span><br><span class="line">type(new Date()); // &quot;date&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="location"><a href="#location" class="headerlink" title="location"></a>location</h4><p><code>let curPath = location.pathname;</code><br>如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http://localhost:8081/courseIndex?channel=123&amp;lin=linziying</span><br><span class="line">location.pathname</span><br><span class="line">&quot;/courseIndex&quot;</span><br><span class="line">location.search</span><br><span class="line">&quot;?channel=1524653365&amp;lin=linziying&quot;</span><br><span class="line"></span><br><span class="line">http://localhost:8081/home/index/index</span><br><span class="line">location.pathname</span><br><span class="line">&quot;/home/index/index&quot;</span><br><span class="line">location.origin</span><br><span class="line">&quot;http://localhost:8081&quot;</span><br><span class="line">location.host</span><br><span class="line">&quot;localhost:8081&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h3><p>是字符串写在前面，字符串的实例方法<br>String.prototype.replace()：按照给定的正则表达式进行替换，返回替换后的字符串<br>字符串对象的replace方法可以替换匹配的值。它接受两个参数，第一个是正则表达式，表示搜索模式，第二个是替换的内容。<br>下面再来说location.replace<br>location.replace 是替换当前页面，如果a页面 跳转到 b页面  b页面 写location.replace（c） 当点击返回按钮时，就会回到a页面，换句话说，location.replace 是清除了本页面的访问记录，直接回到上一个页面<br>如果是 b页面href到c页面的话，按c页面的回退按钮，会回到b页面</p>
+<h3 id="history-对象"><a href="#history-对象" class="headerlink" title="history 对象"></a>history 对象</h3><p>history.replaceState</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if( window.history &amp;&amp; history.pushState )&#123;</span><br><span class="line">	history.replaceState(&#123;state:1&#125;,&apos;&apos;,&apos;/usercateList&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="DOM-模型概述"><a href="#DOM-模型概述" class="headerlink" title="DOM 模型概述"></a>DOM 模型概述</h2><h2 id="错误处理机制"><a href="#错误处理机制" class="headerlink" title="错误处理机制"></a>错误处理机制</h2><h3 id="try…catch-结构"><a href="#try…catch-结构" class="headerlink" title="try…catch 结构"></a>try…catch 结构</h3><p>一旦发生错误，程序就中止执行了。JavaScript 提供了try…catch结构，允许对错误进行处理，选择是否往下执行。</p>
+<p>如果你不确定某些代码是否会报错，就可以把它们放在try…catch代码块之中，便于进一步对错误进行处理。因为一旦报错js会阻塞，然后就卡在那里不执行。<br>例如json.parse方法，ocalStorage.setItem在iphone的混合模式下会报错，以及下面这个</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dateFormat:function(time)&#123;</span><br><span class="line">    var unixTimestamp = new Date( time*1000 ) ;</span><br><span class="line">    var commonTime;</span><br><span class="line">    try&#123;</span><br><span class="line">        commonTime = unixTimestamp.toLocaleString(&quot;zh-CN&quot;);</span><br><span class="line">    &#125;catch(err)&#123;</span><br><span class="line">        console.log(err);</span><br><span class="line">        commonTime = unixTimestamp.toLocaleString();</span><br><span class="line">    &#125;</span><br><span class="line">    return commonTime;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="document-referrer"><a href="#document-referrer" class="headerlink" title="document.referrer"></a>document.referrer</h3><p>此返回上一页相关HTML代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;a href=&quot;javascript:history.go(-1)&quot; class=&quot;header-back jsBack&quot;&gt;返回&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>在大部分场景下，上面办法可以满足我们的交互需求，但是，在有些时候，上面的代码就有些心有力而气不足，因为当前页面的referrer并不总是存在的。</p>
+<p>比方说用户是通过微信分享进来的，直接进入了内页，此时是没有上一页的，返回按钮再怎么点击都没有任何反应，就会让用户很奇怪，十有八九会认为是实现了bug，则会让用户对产品的品质抱有疑虑，那问题可就大了。</p>
+<p>怎么办呢！后来我想了一招，那就是如果发现浏览器没有上一页来源信息，我们就把返回按钮的链接改成首页的链接地址，这样无论什么时候，用户点击返回按钮一定是会有反应的，并且返回首页从逻辑上讲也是合情合理的。而这里判断是否有没有来源信息就是使用这里的document.referrer，当浏览器得不到上一页的来源信息的时候，document.referrer的返回值就是空字符串’’，于是乎，就有类似下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (document.referrer === &apos;&apos;) &#123;</span><br><span class="line">    // 没有来源页面信息的时候，改成首页URL地址</span><br><span class="line">    $(&apos;.jsBack&apos;).attr(&apos;href&apos;, &apos;/&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ajax与HTML5-history-pushState-replaceState实例"><a href="#ajax与HTML5-history-pushState-replaceState实例" class="headerlink" title="ajax与HTML5 history pushState/replaceState实例"></a>ajax与HTML5 history pushState/replaceState实例</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">JS代码：</span><br><span class="line">var eleMenus = $(&quot;#choMenu a&quot;).bind(&quot;click&quot;, function(event) &#123;</span><br><span class="line">    var query = this.href.split(&quot;?&quot;)[1];</span><br><span class="line">    if (history.pushState &amp;&amp; query &amp;&amp; !$(this).hasClass(clMenuOn)) &#123;</span><br><span class="line">        /*</span><br><span class="line">            ajax载入~~</span><br><span class="line">        */</span><br><span class="line">        </span><br><span class="line">        // history处理</span><br><span class="line">        var title = &quot;上海3月开盘项目汇总-&quot; + $(this).text().replace(/\d+$/, &quot;&quot;);</span><br><span class="line">        document.title = title;</span><br><span class="line">        if (event &amp;&amp; /\d/.test(event.button)) &#123;            </span><br><span class="line">            history.pushState(&#123; title: title &#125;, title, location.href.split(&quot;?&quot;)[0] + &quot;?&quot; + query);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var fnHashTrigger = function(target) &#123;</span><br><span class="line">    var query = location.href.split(&quot;?&quot;)[1], eleTarget = target || null;</span><br><span class="line">    if (typeof query == &quot;undefined&quot;) &#123;</span><br><span class="line">        if (eleTarget = eleMenus.get(0)) &#123;</span><br><span class="line">            // 如果没有查询字符，则使用第一个导航元素的查询字符内容</span><br><span class="line">            history.replaceState(null, document.title, location.href.split(&quot;#&quot;)[0] + &quot;?&quot; + eleTarget.href.split(&quot;?&quot;)[1]) + location.hash;    </span><br><span class="line">            fnHashTrigger(eleTarget);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        eleMenus.each(function() &#123;</span><br><span class="line">            if (eleTarget === null &amp;&amp; this.href.split(&quot;?&quot;)[1] === query) &#123;</span><br><span class="line">                eleTarget = this;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        if (!eleTarget) &#123;</span><br><span class="line">            // 如果查询序列没有对应的导航菜单，去除查询然后执行回调</span><br><span class="line">            history.replaceState(null, document.title, location.href.split(&quot;?&quot;)[0]);    </span><br><span class="line">            fnHashTrigger();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $(eleTarget).trigger(&quot;click&quot;);</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;;</span><br><span class="line">if (history.pushState) &#123;</span><br><span class="line">    window.addEventListener(&quot;popstate&quot;, function() &#123;</span><br><span class="line">        fnHashTrigger();                             </span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    // 默认载入</span><br><span class="line">    fnHashTrigger();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">history.pushState(&#123;page: 4&#125;, &quot;title 1&quot;, &quot;&quot;);</span><br><span class="line">				if ( window.history &amp;&amp; window.history.pushState ) &#123;</span><br><span class="line">					window.addEventListener(&quot;popstate&quot;, function () &#123;</span><br><span class="line">						history.replaceState(&#123;page: 4&#125;, &quot;title 1&quot;, location.href);</span><br><span class="line">						location.href = &quot;/&quot;;</span><br><span class="line">					&#125;);</span><br><span class="line">				&#125;</span><br></pre></td></tr></table></figure>
+<p>pushState会促发popstate事件监听，pushState会在历史里面添加记录，返回时是进入到这个地址，而replaceState虽然能改变浏览器url地址但是并不会添加进历史，回退不会进入相应的地址。</p>
+<h3 id="类的使用"><a href="#类的使用" class="headerlink" title="类的使用"></a>类的使用</h3>
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+  <div id="disqus_thread">
+    <script type="text/javascript">
+    var disqus_config = function () {
+          this.page.url = window.location.href;
+          this.page.identifier = 'post-js';
+          this.page.title = 'js基础';
+      };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2018/07/mobile/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一页</a>
+        </div>
+      
+      
+        <div class="nav-next">
+          <a href="/2018/05/promise/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">关于本站</h1>
+        <div class="custom-widget-content">
+          
+          <p align="left">分享前端开发中的技术文章，分享生活中的灵感与创意，旅行心得等</p>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">与我联系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/shuangmuyingzi" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="http://weibo.com/shuangmuyingzi" class="icon icon-weibo" target="_blank">weibo</a>
+            
+              <a href="mailto:466570690lzy@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站内搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>舍宠博客 &copy; 2018</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+<script>
+  var disqus_shortname = 'hinpc';
+
+  
+  var disqus_url = 'https://shuangmuyingzi.github.io/2018/06/js/';
+  
+
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+
+
+</body>
+
+</html>
