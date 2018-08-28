@@ -1,7 +1,12 @@
----
 title: NPM — JavaScript 的包管理器
 date: 2017-11-23
-photo: https://shuangmuyingzi.github.io/img/npm.jpg
+tag:
+ - js
+ - 构建
+
+photos:
+ - /img/2017/1.jpg 
+
 ---
 
 本文主要介绍npm的常用命令，以及如何发布一些常用的js模块化代码到npm上面方便日后的使用，和举例如何把一个vue组件打包发布到npm到最后下载到本地使用的过程。

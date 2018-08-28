@@ -1,7 +1,11 @@
----
 title: js简单的防抖跟节流
 date: 2018-01-26
-photo: https://shuangmuyingzi.github.io/img/npm.jpg
+tag:
+ - js
+
+photos:
+ - /img/2017/4.jpg 
+
 ---
 
 前端的优化这个老生常谈的话题，这次我来记录下js的防抖跟节流对于页面优化的实现方式。

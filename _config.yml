@@ -3,23 +3,23 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 爱煲汤的程序猿
-subtitle: 努力做一名前端届的小厨娘
-description:  全栈开发 | 前端  | css | javascript | 烹饪
-author: shuangmuyingz
-language: zh-CN 
-timezone: UTC
+title: 舍宠博客
+subtitle: 分享代码与生活
+description: 分享前端开发中的技术文章，分享生活中的灵感与创意，旅行心得等。
+author: Zilia
+language: zh-CN
+timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://shuangmuyingzi.github.io
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :year/:month/:title/
 permalink_defaults:
 
 # Directory
 source_dir: source
-public_dir: public
+public_dir: docs
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
@@ -28,7 +28,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :year-:month-:day-:title.md # File name of new posts
+new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
@@ -40,18 +40,18 @@ future: true
 highlight:
   enable: true
   line_number: false
-  auto_detect: true
+  auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 10
+  per_page: 4
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -74,14 +74,26 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: Daily
 
-social:
-  github: https://github.com/shuangmuyingzi
-  weibo: http://weibo.com/shuangmuyingzi
-  mail: mailto:466570690lzy@gmail.com
-
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: https://github.com/shuangmuyingzi/shuangmuyingzi.github.io.git
-  branch: master
+  type:
+
+logo: https://shuangmuyingzi.github.io/img/logo.jpg
+
+nav:
+  Home: .
+  Archive: archives
+  About: about
+
+social:
+  github: https://github.com/shuangmuyingzi
+  weibo: http://weibo.com/shuangmuyingzi
+  # twitter: https://twitter.com/GallenHu
+  mail: mailto:466570690lzy@gmail.com
+
+widget:
+  title: 关于本站
+  content: <p align="left">分享前端开发中的技术文章，分享生活中的灵感与创意，旅行心得等</p>
+
+disqus_shortname: hinpc

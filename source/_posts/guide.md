@@ -1,7 +1,11 @@
----
 title: JavaScript guide
 date: 2017-12-28
-photo: https://shuangmuyingzi.github.io/img/npm.jpg
+tag:
+ - js
+
+photos:
+ - /img/2017/4.jpg 
+
 ---
 
 本文主要记录一些javascript优秀的写法，自己又老是不习惯使用的，方便日后养成习惯。

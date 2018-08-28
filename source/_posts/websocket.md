@@ -1,7 +1,12 @@
----
 title: 简单的 Web Socket 客户端
 date: 2017-10-31
-photo: https://shuangmuyingzi.github.io/img/npm.jpg
+tag:
+ - js
+ - websocket
+
+photos:
+ - /img/2017/2.jpg 
+
 ---
 
 HTML5之webSocket的客户端实现，建立webSocket连接、交换信息及最终关闭webSocket连接过程。

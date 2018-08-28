@@ -1,7 +1,12 @@
----
 title: Promise学习
 date: 2018-05-28
-photo: https://shuangmuyingzi.github.io/img/npm.jpg
+tag:
+ - js
+ - promise
+
+photos:
+ - /img/2017/5.jpg 
+
 ---
 
 Promise对象是一个构造函数，其接受一个函数作为参数，resolve、reject为这个函数的参数，函数内部一般为异步执行的代码，resolve作为异步执行完成之后成功的回调，reject作为异步执行抛错的回调。Promise构造函数可以理解为执行异步的过程，其resolve和reject为执行异步调用结果的回调函数。

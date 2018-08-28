@@ -1,7 +1,11 @@
----
 title: 总有后悔药吃的git
 date: 2018-04-28
-photo: https://shuangmuyingzi.github.io/img/npm.jpg
+tag:
+ - git
+
+photos:
+ - /img/2017/5.jpg 
+
 ---
 
 记录一些常用的git操作，以便回顾和查询。理解这些指令，觉得最重要的是理解Git的内部原理，比如Git的分布式版本控制，分清楚工作区、暂存区、版本库，还有就是理解Git跟踪并管理的是修改，而非文件。

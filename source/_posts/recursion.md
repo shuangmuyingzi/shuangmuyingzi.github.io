@@ -1,7 +1,11 @@
----
 title: js递归
 date: 2018-02-27
-photo: https://shuangmuyingzi.github.io/img/npm.jpg
+tag:
+ - js
+
+photos:
+ - /img/2017/4.jpg 
+
 ---
 
 程序调用自身的编程技巧称为递归。递归思想也是软件开发中非常重要的基本思想之一。当然这种思想是要有，但是确实递归会影响效率。
