@@ -277,6 +277,40 @@ imgPromise("http://imgurl")
   })：
 ```
 
+### promise实例及与async结合
+![GitHub set up](https://shuangmuyingzi.github.io/img/promise-min.png)
+
+来源：https://mabiao8023.github.io/2017/11/28/promise%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8/
+
+### promise在实际项目中结合ajax使用
+
+```
+let getAjax = () => {
+    return new Promise((resolve, reject) => {
+        Vue.http.get(url,data).then((data)=>{
+            if(data.body.code == '1'){
+                resolve(data.body.data)
+            }else{
+                reject(`获取参数失败。code:${data.body.code}`)
+            }
+        },(res)=>{
+            reject(`请求参数失败`)
+        })
+    })
+}
+
+let getData = async () => {
+    try{
+        let config = await getAjax();
+    }catch(e){
+        console.warn(e)
+        return {}
+    }
+}
+```
+加上await的话，config会得到具体的值，不加的话就是返回promise对象，在then方法里面获取resole的值，加await也一样可以在then里面拿。
+
+
 
 
 
