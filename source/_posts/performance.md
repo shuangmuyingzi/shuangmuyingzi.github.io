@@ -195,4 +195,18 @@ styles.css 和 app.js 通过另一个关键路径获取。暂时不获取 analyt
 
 来源：http://jinlong.github.io/2017/05/08/optimising-the-front-end-for-the-browser/
 
+## Performance面板
+1.FPS,CPU和NET的使用情况？
+2.页面的前1毫秒和后1毫秒网络任务是怎样？
+3.Javascript代码的执行消耗时间，显卡负载情况等？
+4.浏览器对页面的绘制精确到毫秒级的情况？
+
+![GitHub set up](https://image-static.segmentfault.com/901/722/901722112-59573ab2d3a82_articlex)
+
+这幅图中，1，2包括了FPS，CPU，NET以及网页渲染快照以及流式Network图，直观地浅显地回答了1和2两个问题，3回答了Javascript代码的执行消耗时间，显卡负载情况等，4则回答了浏览器对页面的绘制精确到毫秒级的情况。
+　　第4步，也就是我们最关心的一步，是浏览器对页面的绘制精确到毫秒级的情况，准确的为我们剖析了浏览器加载渲染页面的全过程。
+![GitHub set up](https://image-static.segmentfault.com/238/567/2385678839-59573ab30378f_articlex)
+因此下文我们主要对4进行剖析，它包括4个分析面板，肯定有各自的意思在其中。
+![GitHub set up](https://image-static.segmentfault.com/705/086/705086117-59479253d5169_articlex)
+来源：https://segmentfault.com/a/1190000009845281
 

@@ -23,6 +23,8 @@ photos:
 如何查看 video 的内部构造：
 chrome 下，开发者工具  setting  Preferences  Elements  勾选 "Show user agent shadow DOM"
 
+![GitHub set up](https://shuangmuyingzi.github.io/img/video1.png)
+
 ### video的属性
 
 ```
@@ -60,6 +62,50 @@ chrome 下，开发者工具  setting  Preferences  Elements  勾选 "Show user 
 
 * x5­-video­-player­-fullscreen:全屏设置。它又两个属性值，ture和false，true支持全屏播放，false不支持全屏播放。其实，IOS 微信浏览器是Chrome的内核，相关的属性都支持，也是为什么X5同层播放不支持的原因。安卓微信浏览器是X5内核，一些属性标签比如playsinline就不支持，所以始终全屏。
 
+### video 的事件
+video 支持的事件很多，但在有些事件在不同的系统上跟预想的表现不一致，在尝试比较之后，使用 timeupdate 和 ended 这两个事件基本可以满足需求
 
+```
+video.addEventListener('timeupdate', function (e) {
+  console.log(video.currentTime) // 当前播放的进度
+})
+video.addEventListener('ended', function (e) {
+  // 播放结束时触发
+})
+```
+
+### 应用
+知道了video的一些属性方法之后，我们来看看具体的一些使用场景。
+1、统一为固定在某一个区域播放，非全屏
+
+```
+<video class="view-cover"
+		controls
+	   id="my-video"
+		x5-video-player-type="h5"
+		webkit-playsinline
+		playsinline
+		@ended="videoPlayEnd"
+		@touchmove.stop.prevent=""
+		:poster="posterImage"
+>
+</video>
+```
+但是IOS在QQ浏览器会吊起整个播放器，凌驾于任何弹框之上，还可以引用一个库iphone-inline-video（具体用法很简单看它github，这里不介绍了，只需加js一句话，css加点），github地址https://github.com/bfred-it/iphone-inline-video 加上playsinline webkit-playsinline这两个属性和这个库基本可以保证ios端没有问题了（不过亲测，只加webkit-playsinline playsinline这两个属性不引入库好像也是ok的，至今没有在ios端微信没有出现问题，如果你要兼容uc或者qq的浏览器建议带上这个库），具体还没试过。
+2、点击某个区域全屏播放
+
+```
+<video
+		width="100%"
+		ref="video"
+		controls
+		x5-video-player-type="h5"
+		x5-video-player-fullscreen='true'
+		:src="answer.video_url"
+		@play="videoPlay"
+		@pause="videoPaused"
+		preload="auto">
+</video>
+```
 
 

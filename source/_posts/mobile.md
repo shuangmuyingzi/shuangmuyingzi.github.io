@@ -96,6 +96,47 @@ body {
 }
 
 ```
+注意背景颜色：
 
+```
+.gotopay{
+		position: absolute;
+		bottom:0;
+		width: 100%;
+		padding-bottom: constant(safe-area-inset-bottom);
+		padding-bottom: env(safe-area-inset-bottom);
+		span{
+			display: inline-block;
+			width: 100%;
+			line-height:104px;
+			background:#e04e3e;
+			color:#fff;
+			font-size:32px;
+			text-align:center;
+		}
+}
+
+<div class="gotopay"><span>免费咨询</span></div>
+
+.gotopay{
+		position: absolute;
+		bottom:0;
+		width: 100%;
+		padding-bottom: constant(safe-area-inset-bottom);
+		padding-bottom: env(safe-area-inset-bottom);
+
+			width: 100%;
+			line-height:104px;
+			background:#e04e3e;
+			color:#fff;
+			font-size:32px;
+			text-align:center;
+		
+}
+
+<div class="gotopay">免费咨询</div>
+```
+第二种会出现如下情况：
+![GitHub set up](https://shuangmuyingzi.github.io/img/iphoneX.jpg)
 
 
